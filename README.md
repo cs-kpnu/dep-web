@@ -1,2 +1,2 @@
-# dep-web
-This is repository for next-wordpress website.
+At root folder
+docker compose up
