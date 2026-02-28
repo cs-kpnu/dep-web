@@ -53,7 +53,7 @@ export default async function Home() {
           <div className={clsx(styles.container, styles['hero-container'])}>
             <div className={styles['hero-content']}>
               <h1>{title1} <br />{title2}</h1>
-              <p dangerouslySetInnerHTML={{ __html: description }}></p>
+              {/* <p dangerouslySetInnerHTML={{ __html: description }}></p> */}
             </div>
             <div className={styles['hero-graphic']}>
               <Image src={BubbleImage} alt="Hero Graphic" />

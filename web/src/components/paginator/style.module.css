@@ -1,0 +1,70 @@
+.paginationWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Менший gap для мобайлу */
+    margin: 40px 0;
+    width: 100%;
+}
+
+.pagesList {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Базовий стиль кнопки (Mobile First) */
+.pageBtn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    width: 32px; /* Менший розмір для пальців на мобайлі */
+    height: 32px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.pageBtn.active {
+    background-color: #3b82f6;
+    color: white;
+}
+
+/* Стрілки */
+.arrowBtn {
+    background: #1e1e1e;
+    border: 1px solid #333;
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.arrowBtn:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
+@media (min-width: 480px) {
+    .paginationWrapper {
+        gap: 16px;
+    }
+
+    .pageBtn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .pagesList {
+        gap: 8px;
+    }
+}
