@@ -13,7 +13,7 @@ import styles from "./page.module.css";
 
 async function getPage(params) {
   try {
-    // return await api.get("/pages/2?_embed")
+    return await api.get("/pages/2?_embed")
   } catch (error) {
     console.error("Error fetching page:", error);
     // throw error;
@@ -21,7 +21,7 @@ async function getPage(params) {
 }
 async function getPosts(params) {
   try {
-    // return await api.get("/posts?_embed&per_page=3")
+    return await api.get("/posts?_embed&per_page=3")
   } catch (error) {
     console.error("Error fetching posts:", error);
     // throw error;
@@ -53,7 +53,7 @@ export default async function Home() {
           <div className={clsx(styles.container, styles['hero-container'])}>
             <div className={styles['hero-content']}>
               <h1>{title1} <br />{title2}</h1>
-              {/* <p dangerouslySetInnerHTML={{ __html: description }}></p> */}
+              {description ? <p dangerouslySetInnerHTML={{ __html: description }}></p> : null}
             </div>
             <div className={styles['hero-graphic']}>
               <Image src={BubbleImage} alt="Hero Graphic" />

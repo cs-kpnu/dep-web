@@ -110,12 +110,23 @@
 
 .hero {
   padding-top: 160px;
-  min-height: 100vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
-  background: var(--gradient-main);
+  /* background: var(--gradient-main); */
   position: relative;
   overflow: hidden;
+
+  background: linear-gradient(
+    302.51deg,
+    rgba(0, 0, 0, 0.5) 4.3%,
+    rgba(56, 83, 222, 0.5) 25.56%,
+    rgba(0, 0, 0, 0.5) 50.18%,
+    rgba(56, 83, 222, 0.5) 78.49%,
+    rgba(0, 0, 0, 0.5) 101.22%,
+    rgba(56, 83, 222, 0.5) 117.8%
+  );
+  border-bottom: 2px solid #3853de;
 }
 
 .hero::before {
