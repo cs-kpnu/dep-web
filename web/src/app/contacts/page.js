@@ -94,7 +94,7 @@ export default async function Home() {
                         <Image src={MapIcon} alt="Location" />
                         <div className={styles['contact-item-half']}>
                             <div className={styles['contact-label']}>АДРЕСА</div>
-                            <div className={styles['contact-item-text']}>32301, Україна, Хмельницька область, м. Кам’янець-Подільський, вул. Симона
+                            <div className={styles['contact-item-text']}>32301, Україна, Хмельницька область, м. Кам’янець-Подільський, <br /> вул. Симона
                                 Петлюри, 1, пов. 4, каб. 44</div>
                         </div>
                     </div>
