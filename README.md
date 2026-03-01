@@ -9,7 +9,7 @@ docker compose up
 ### to import dev database
 
 ```bash
-docker exec -i <назва_контейнера_бд> mysql -u wordpress -pwordpress_pass wordpress < dump.sql
+docker exec -i <назва_контейнера_бд> mysql -u wordpress -pwordpress wordpress < dump.sql
 
 ```
 
