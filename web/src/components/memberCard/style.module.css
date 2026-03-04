@@ -1,0 +1,163 @@
+.card {
+    background: #0d0d0f;
+    border: 1px solid #2d2d30;
+    border-radius: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%; /* Важливо для однакової висоти в ряду */
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+    border-color: #4f46e5;
+    transform: translateY(-5px);
+}
+
+.imageContainer {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background: #1a1a1a;
+}
+
+.image {
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .image {
+    transform: scale(1.03);
+}
+
+.badge {
+    position: absolute;
+    top: 1.25rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 2rem;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    z-index: 2;
+    text-transform: uppercase;
+}
+
+.roleBadge { left: 1.25rem; background: #3b49df; color: white; }
+.statusBadge { right: 1.25rem; background: #57ba69; color: white; }
+
+/* Варіації кольорів ролей */
+.roleMentor { background: rgba(255, 139, 41, 0.75); }
+.roleLead { background: rgba(59, 73, 223, 0.75); }
+.roleMember { background: rgba(75, 85, 99, 0.75); }
+.statusGraduate { background: rgba(224, 81, 81, 0.8); }
+.statusActive { background: rgba(87, 186, 105, 0.8); }
+
+.content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 0.8rem;
+}
+
+/* Фікс для імені та прізвища (макс 2 рядки) */
+.nameSection {
+    min-height: 2.0rem; /* Резервуємо місце під 2 рядки */
+}
+
+.fullName {
+    font-size: 1.6rem; /* Трохи зменшив, щоб влізло в 2 рядки при 3-х колонках */
+    line-height: 1.2;
+    color: #ffffff;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.lastName {
+    font-weight: 800;
+    text-transform: none;
+}
+
+/* Фікс для посади (макс 3 рядки) */
+.degree {
+    font-size: 1.0rem;
+    color: #4d71ff;
+    line-height: 1.4;
+    min-height: 3.6rem; /* Резервуємо місце під 3 рядки */
+    margin-bottom: 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.metaRow {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    color: #a1a1aa;
+}
+
+.whiteText { color: #ffffff; font-weight: 600; }
+
+.projectsSection {
+    margin-top: 0.5rem;
+    min-height: 5.5rem; /* Опціонально: щоб теги не рухали кнопку */
+}
+
+.projectsTitle {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.05em;
+}
+
+.tagsContainer {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+
+.tag {
+    background: #ffffff;
+    color: #000000;
+    padding: 0.3rem 0.8rem;
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.detailsBtn {
+    margin-top: auto; /* Штовхає кнопку вниз, незалежно від контенту */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 1rem;
+    background: #4f46e5;
+    border-radius: 2rem;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+    text-transform: uppercase;
+}
+
+.detailsBtn:hover { background: #3b31d1; }
+
+.arrow { transition: transform 0.2s ease; }
+.detailsBtn:hover .arrow { transform: translateX(5px); }
+
+/* Адаптивність Mobile First (вже враховано в Page.module.css) */
+@media (max-width: 640px) {
+    .fullName { font-size: 1.4rem; }
+    .content { padding: 1.25rem; }
+}
