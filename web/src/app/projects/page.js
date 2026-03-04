@@ -103,6 +103,7 @@ export default function Home() {
     return (
         <main className={styles.main}>
             <h1>Проєкти</h1>
+            {/*     FILTERS SECTION     */}
             <div className={clsx(styles.wrapperContainer, styles.filtersWrapper)}>
                 <div className={styles.searchInput}>
                     <input type="search"
@@ -112,7 +113,6 @@ export default function Home() {
                            value={searchTerm}
                            onChange={handleSearchChange} />
                 </div>
-                {/*     FILTERS SECTION     */}
                 <div className={styles.selectWrapper}>
                     <div
                         className={`${styles.filterSelect} ${isOpen ? styles.active : ''}`}
