@@ -52,8 +52,10 @@ export default async function Home() {
         <section className={styles.hero}>
           <div className={clsx(styles.container, styles['hero-container'])}>
             <div className={styles['hero-content']}>
-              <h1>{title1} <br />{title2}</h1>
-              {description ? <p dangerouslySetInnerHTML={{ __html: description }}></p> : null}
+              {title1 ? <h1>{title1} <br />{title2}</h1> : <h1>Навчайся.
+                Створюй.Надихай!
+              </h1>}
+              {description ? <p dangerouslySetInnerHTML={{ __html: description }}></p> : <p>Ми реалізуємо соціально значущі IT-рішення, посилюючи громадянську позицію молоді, та формуємо партнерство з провідними технічними спеціалістами й організаціями галузі.</p>}
             </div>
             <div className={styles['hero-graphic']}>
               <Image src={BubbleImage} alt="Hero Graphic" />
@@ -176,7 +178,7 @@ export default async function Home() {
             </div>
           </div>
         </section>
-      </main>
+      </main >
     </>
   );
 }

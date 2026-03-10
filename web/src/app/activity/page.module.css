@@ -1,0 +1,196 @@
+.main {
+    text-align: center;
+    display:  flex;
+    flex-direction: column;
+}
+.wrapperContainer {
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+}
+/* Mobile First: один під одним */
+.filtersWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.searchInput {
+    position: relative;
+    width: 100%;
+}
+
+.searchInput input {
+    width: 100%;
+    height: 48px;
+    background-color: #1e1e1e; /* Темний фон як на фото */
+    border: 1px solid #333333;
+    border-radius: 12px;
+    padding: 0 16px 0 44px; /* Місце для іконки */
+    color: #ffffff;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.searchInput::before {
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23666666' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+.inputField {
+    width: 100%;
+    height: 48px;
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 0 16px 0 44px;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.5;
+}
+
+/* Кастомний Селект */
+.selectWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.filterSelect {
+    width: 100%;
+    height: 48px;
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Текст ідеально по центру */
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+}
+
+.arrow {
+    position: absolute;
+    right: 16px;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(45deg);
+    transition: 0.3s;
+}
+
+.arrowIcon {
+    position: absolute;
+    right: 16px;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(45deg); /* Дивиться вниз */
+    transition: transform 0.3s ease;
+    pointer-events: none;
+}
+
+.filterSelect.active .arrowIcon {
+    transform: rotate(-135deg);
+    top: 22px;
+}
+
+.arrowUp {
+    transform: rotate(-135deg);
+}
+
+.optionsList {
+    position: absolute;
+    top: 56px;
+    left: 0;
+    width: 100%;
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 12px;
+    list-style: none;
+    padding: 8px 0;
+    z-index: 100;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.optionItem {
+    padding: 12px;
+    text-align: center;
+    color: #ccc;
+}
+
+.optionItem:hover {
+    background-color: #2a2a2a;
+    color: #fff;
+}
+
+.eventsSection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.cardWrapper {
+    /* Mobile First: 1 колонка */
+    flex: 1 1 100%;
+    display: flex;
+}
+
+.flexGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+/* Mobile: 1 колонка */
+.flexItem {
+    flex: 1 1 100%;
+}
+
+/* Tablet: 2 колонки */
+@media (min-width: 768px) {
+    .cardWrapper {
+        flex: 0 1 calc(50% - 12px);
+    }
+    .filtersWrapper {
+        flex-direction: row;
+        align-items: center;
+    }
+    .searchInput {
+        flex: 1;
+    }
+    .selectWrapper {
+        width: 180px;
+    }
+}
+
+/* Desktop: 3 колонки */
+@media (min-width: 1024px) {
+    .main{
+        padding: 60px
+    }
+    .cardWrapper {
+        flex: 0 1 calc(33.333% - 16px);
+    }
+}
