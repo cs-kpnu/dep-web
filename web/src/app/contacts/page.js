@@ -87,7 +87,7 @@ export default async function Home() {
                     <button className={styles['form-button']} type="submit">Надіслати</button>
                 </form>
             </section>
-            <section className={styles['contact-info']}>
+            {/* <section className={styles['contact-info']}>
                 <h2 className={styles['title2']}>Контакти</h2>
                 <div className={styles['contact-container']}>
                     <div className={styles['contact-item1']}>
@@ -113,7 +113,7 @@ export default async function Home() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
         </main>
     );
 }

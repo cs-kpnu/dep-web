@@ -1,0 +1,65 @@
+.accordionCard {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.accordionCard:hover {
+  background-color: #1c1c1f;
+}
+
+.accordionCard h2 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.section {
+  padding: 1.5rem 2rem;
+}
+
+.accordionContent {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  &.open {
+    max-height: 100vh;
+  }
+}
+
+/* FIXME: duplicated from first.module.css */
+.detailsCard {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 1rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.iconBlue {
+  color: var(--accent-blue-light);
+}
+
+.sectionHeader h2 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0;
+}
