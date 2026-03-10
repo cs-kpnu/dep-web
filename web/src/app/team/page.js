@@ -10,7 +10,7 @@ import clsx from "clsx";
 * temporary dev images imports for testing purposes
 * TODO: delete after implementation
 * */
-import UserImage from "../../assets/team-photo-mock/photo-1507003211169-0a1dd7228f2d.jpeg"
+import UserImage from "../../assets/team-photo-mock/member1.jpg"
 
 export default function TeamPage() {
     const [isOpen, setIsOpen] = useState(false);
@@ -119,11 +119,11 @@ export default function TeamPage() {
             <div className={clsx(styles.wrapperContainer, styles.filtersWrapper)}>
                 <div className={styles.searchInput}>
                     <input type="search"
-                           name="search"
-                           id="searchInput"
-                           placeholder="Прізвище або ім'я учасника..."
-                           value={searchTerm}
-                           onChange={handleSearchChange} />
+                        name="search"
+                        id="searchInput"
+                        placeholder="Прізвище або ім'я учасника..."
+                        value={searchTerm}
+                        onChange={handleSearchChange} />
                 </div>
 
                 <div className={styles.selectWrapper}>
