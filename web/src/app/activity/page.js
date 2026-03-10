@@ -34,7 +34,7 @@ export default function EventsPage() {
             author: "Юліана Некрасова",
             publishedAt: "02.03.2026, 14:30",
             imageUrl: Project1Image,
-            links: [{ text: "Посилання 1", url: "#" }]
+            links: [{ text: "Посилання 1", url: "https://cs.kpnu.edu.ua/2025/10/30/ekskursiia-na-at-podilskyj-tsement/" }]
         },
         {
             id: "2",
@@ -46,7 +46,7 @@ export default function EventsPage() {
             author: "Юліана Некрасова",
             publishedAt: "20.09.2024, 14:30",
             imageUrl: Project3Image,
-            links: [{ text: "Посилання 1", url: "#" }]
+            links: [{ text: "Посилання 1", url: "https://cs.kpnu.edu.ua/2025/10/20/kafedra-komp-iuternykh-nauk-na-egap-ideathon-2025/" }]
         },
         // Генерація для тесту пагінації (всі минулорічні)
         ...Array.from({ length: 30 }, (_, i) => ({
@@ -59,7 +59,7 @@ export default function EventsPage() {
             author: "Юліана Некрасова",
             publishedAt: "14.10.2024, 14:30",
             imageUrl: Project3Image,
-            links: [{ text: "Посилання 1", url: "#" }]
+            links: [{ text: "Посилання 1", url: "https://cs.kpnu.edu.ua/2025/10/30/ekskursiia-na-at-podilskyj-tsement/" }]
         }))
     ], []);
 
@@ -112,11 +112,11 @@ export default function EventsPage() {
             <div className={clsx(styles.wrapperContainer, styles.filtersWrapper)}>
                 <div className={styles.searchInput}>
                     <input type="search"
-                           name="search"
-                           id="searchInput"
-                           placeholder="Введіть назву проєкту"
-                           value={searchTerm}
-                           onChange={handleSearchChange} />
+                        name="search"
+                        id="searchInput"
+                        placeholder="Введіть назву проєкту"
+                        value={searchTerm}
+                        onChange={handleSearchChange} />
                 </div>
                 <div className={styles.selectWrapper}>
                     <div
@@ -156,9 +156,9 @@ export default function EventsPage() {
             {/* PAGINATION  */}
             {totalPages > 1 && (
                 <Pagination className={styles.wrapperContainer}
-                            totalPages={totalPages}
-                            currentPage={currentPage}
-                            onPageChange={handlePageChange}
+                    totalPages={totalPages}
+                    currentPage={currentPage}
+                    onPageChange={handlePageChange}
                 />
             )}
         </main>
