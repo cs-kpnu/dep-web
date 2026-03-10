@@ -9,7 +9,7 @@
   --accent-blue-light: #818cf8;
   --accent-green: #22c55e;
 
-  background-color: var(--bg-dark);
+  /* background-color: var(--bg-dark); */
   color: var(--text-primary);
   min-height: 100vh;
   padding: 2rem;
