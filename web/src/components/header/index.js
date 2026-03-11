@@ -50,6 +50,8 @@ function Header() {
                         </ul>
                     </nav>
                 </div>
+
+                <span className="lang-switcher">UA</span>
             </header>
         </div>
     )

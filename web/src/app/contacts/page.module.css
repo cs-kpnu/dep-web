@@ -26,7 +26,7 @@
   line-height: 32px;
   text-align: center;
   margin: 0 auto 48px auto;
-  max-width: 800px;
+  max-max-width: 800px;
 }
 
 .contacts-form {
@@ -46,14 +46,14 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 800px;
+  max-width: 800px;
   height: auto;
   min-height: 50px;
   z-index: 10;
   cursor: pointer;
 }
 .filter-selected {
-  width: 800px;
+  max-width: 800px;
   height: 50px;
   background: var(--form);
   border: 1.6px solid white;
@@ -71,7 +71,7 @@
 .filter-option {
   display: none;
   position: static;
-  width: 800px;
+  max-width: 800px;
   height: 138px;
   background-color: var(--panel);
   border: 1.6px solid white;
@@ -113,7 +113,7 @@
 }
 
 .form {
-  width: 800px;
+  max-width: 800px;
   height: 793.8px;
   background: var(--form);
   border: 1.6px solid white;
@@ -136,7 +136,7 @@
 }
 
 .form input:not([type='checkbox']) {
-  width: 733px;
+  max-width:733px;
   padding: 12px 16px;
   border: 1.6px solid white;
   border-radius: 14px;
@@ -151,7 +151,7 @@
 }
 
 .form textarea {
-  width: 733px;
+  max-width:733px;
   padding: 12px 16px;
   border: 1.6px solid white;
   border-radius: 14px;
@@ -176,7 +176,7 @@
   justify-content: flex-start;
   gap: 10px;
   height: 24px;
-  width: 732.8px;
+  max-width:732.8px;
   margin-bottom: 24px;
   margin-top: 24px;
   box-sizing: border-box;
@@ -198,7 +198,7 @@
 }
 
 .form .form-button {
-  width: 733px;
+  max-width:733px;
   height: 56px;
   background-color: var(--panel);
   color: white;
@@ -212,7 +212,7 @@
 }
 
 .contact-container {
-  width: 800px;
+  max-width: 800px;
   height: 306px;
   background: var(--form);
   border: 1.6px solid white;
@@ -270,4 +270,34 @@
 
 .img {
   display: inline;
+}
+
+@media (max-width: 992px) {
+  .title1 {
+    font-size: 32px;
+    margin-top: 80px;
+  }
+  .title2 {
+    font-size: 32px;
+    margin-top: 40px;
+  }
+  .after-title-text {
+    font-size: 18px;
+    min-width: initial;
+    width: 100%;
+    padding: 0 16px;
+    box-sizing: border-box;
+    margin-bottom: 0;
+  }
+
+  .contact-item-text{
+    min-width: initial;
+    width: 100%;
+  }
+  .form input:not([type='checkbox']) {
+    width: 100%;  
+  }
+  .form textarea {
+    width: 100%;
+  }
 }
