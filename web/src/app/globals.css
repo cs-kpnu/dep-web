@@ -557,7 +557,11 @@ header {
   }
 
   main{
-    padding-top: 120px;
+    padding-top: 80px;
+  }
+
+  main  > :first-child:not(section) {
+    margin-top: 24px;
   }
 
   .lang-switcher {

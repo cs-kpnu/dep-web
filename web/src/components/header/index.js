@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, memo } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { api } from "@/lib/api";
 import clsx from "clsx";
@@ -42,11 +43,11 @@ function Header() {
                 <div className={clsx("menu-wrapper", isMenuOpen && "active")}>
                     <nav className={clsx("menu", isMenuOpen && "active")}>
                         <ul>
-                            <li><a href="/"><span className="menu-item-text active"><span className="menu-icon"><Image src={HomeIcon} alt="menu item"/></span>Головна</span></a><div className="menu-li-line"></div></li>
-                            <li><a href="/team"><span className="menu-item-text"><span className="menu-icon"><Image src={TeamIcon} alt="menu item"/></span>Команда</span></a><div className="menu-li-line"></div></li>
-                            <li><a href="/projects"><span className="menu-item-text"><span className="menu-icon"><Image src={ProjectsIcon} alt="menu item"/></span>Проєкти</span></a><div className="menu-li-line"></div></li>
-                            <li><a href="/activity"><span className="menu-item-text"><span className="menu-icon"><Image src={ActivityIcon} alt="menu item"/></span>Діяльність</span></a><div className="menu-li-line"></div></li>
-                            <li><a href="/contacts"><span className="menu-item-text"><span className="menu-icon"><Image src={ContactsIcon} alt="menu item"/></span>Контакти</span></a><div className="menu-li-line"></div></li>
+                            <li><Link href="/"><span className="menu-item-text active"><span className="menu-icon"><Image src={HomeIcon} alt="menu item"/></span>Головна</span></Link><div className="menu-li-line"></div></li>
+                            <li><Link href="/team"><span className="menu-item-text"><span className="menu-icon"><Image src={TeamIcon} alt="menu item"/></span>Команда</span></Link><div className="menu-li-line"></div></li>
+                            <li><Link href="/projects"><span className="menu-item-text"><span className="menu-icon"><Image src={ProjectsIcon} alt="menu item"/></span>Проєкти</span></Link><div className="menu-li-line"></div></li>
+                            <li><Link href="/activity"><span className="menu-item-text"><span className="menu-icon"><Image src={ActivityIcon} alt="menu item"/></span>Діяльність</span></Link><div className="menu-li-line"></div></li>
+                            <li><Link href="/contacts"><span className="menu-item-text"><span className="menu-icon"><Image src={ContactsIcon} alt="menu item"/></span>Контакти</span></Link><div className="menu-li-line"></div></li>
                         </ul>
                     </nav>
                 </div>
@@ -58,4 +59,4 @@ function Header() {
 
 }
 
-export default memo(Header);
+export default memo(Header); 

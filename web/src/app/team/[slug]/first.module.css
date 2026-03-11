@@ -12,29 +12,14 @@
   /* background-color: var(--bg-dark); */
   color: var(--text-primary);
   min-height: 100vh;
-  padding: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   font-family:
     system-ui,
     -apple-system,
     sans-serif;
   max-width: 1200px;
   margin: 0 auto;
-}
-
-/* Breadcrumb */
-.breadcrumb {
-  background-color: var(--bg-card);
-  padding: 1rem 1.5rem;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  margin-bottom: 2rem;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-}
-
-.breadcrumbLink {
-  color: var(--accent-blue-light);
-  cursor: pointer;
 }
 
 /* Main Profile Hero */

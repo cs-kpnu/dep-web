@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { api } from "@/lib/api";
 import clsx from "clsx";
 
@@ -52,11 +53,11 @@ export default async function Footer() {
                     <div className="footer-content-column">
                         <div className="footer-useful-links">
                             <div className="footer-useful-links-title">Корисні посилання</div>
-                            <a href="/main">Головна</a>
-                            <a href="/team">Команда</a>
-                            <a href="/projects">Проєкти</a>
-                            <a href="/activities">Діяльність</a>
-                            <a href="/contacts">Контакти</a>
+                            <Link href="/">Головна</Link>
+                            <Link href="/team">Команда</Link>
+                            <Link href="/projects">Проєкти</Link>
+                            <Link href="/activity">Діяльність</Link>
+                            <Link href="/contacts">Контакти</Link>
                         </div>
                     </div>
                     <div className="footer-content-column">
