@@ -548,6 +548,7 @@ header {
     padding: 30px 20px;
     transition: background-color 0.3s ease;
     z-index: 101;
+    background-color: #050510;
   }
 
   main{
@@ -588,7 +589,7 @@ header {
     position: relative;
     width: 100%;
     height: fit-content;
-    background: rgba(12, 12, 12, 1);
+    background:#050510;
     flex-direction: column;
     transform: translateY(-100%);
     opacity: 0;
@@ -606,6 +607,7 @@ header {
     transform: translateY(0);
     opacity: 1;
     pointer-events: all;
+    padding: 0.75rem;
   }
 
   .menu ul {
@@ -629,7 +631,11 @@ header {
     align-items: start;
     justify-content: center;
     border-radius: 14px;
+    &:focus, &:hover {
+     background-color: #3a6df0;
+     box-shadow: 0 6px 15px rgba(41, 85, 217, 0.4);
   }
+}
 
   .menu-icon {
     display: block;
@@ -649,6 +655,11 @@ header {
   }
   footer .footer-main {
     padding-top: 1.25rem;
+  }
+
+  h2{
+    font-size: 1.75rem;
+    margin-bottom: 20px;
   }
 }
 

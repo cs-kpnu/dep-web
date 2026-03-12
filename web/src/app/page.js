@@ -1,17 +1,18 @@
 import Image from "next/image";
+import Link from "next/link";
 import clsx from "clsx";
 import { api } from "@/lib/api";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
 
 import BubbleImage from "@/assets/img/main-section-bubble.png";
 import MainImage from "@/assets/img/mission-section-image.png";
 import YoutIMage from "@/assets/img/yout_force.png";
+import ProjectImage from "@/assets/img/case1.png";
 import styles from "./page.module.css";
 
 async function getPage(params) {
   try {
-    return await api.get("/pages/2?_embed");
+   const data =  await api.get("/pages/2?_embed");
+   return data;
   } catch (error) {
     console.error("Error fetching page:", error);
     // throw error;
@@ -19,7 +20,8 @@ async function getPage(params) {
 }
 async function getPosts(params) {
   try {
-    return await api.get("/posts?_embed&per_page=3");
+     const data =  await api.get("/posts?_embed&per_page=3");
+     return data;
   } catch (error) {
     console.error("Error fetching posts:", error);
     // throw error;
@@ -39,46 +41,39 @@ function MockedProjects() {
   return (
     <>
       <div className={styles.card}>
-        <img
-          src="https://placehold.co/80x80/3a6df0/ffffff?text=DLH"
-          alt="Icon"
-        />
+                <Image src={ProjectImage} alt="Icon" />
         <h4>Digital Learning Hub</h4>
         <p>
           Освітній хаб, що надає доступ до сучасних курсів та ресурсів для
           розвитку цифрових навичок.
         </p>
-        <a href="#" className={styles["card-link"]}>
+        <Link href="/projects/1" className={styles["card-link"]}>
           Детальніше
-        </a>
+        </Link>
       </div>
       <div className={styles.card}>
-        <img
-          src="https://placehold.co/80x80/3a6df0/ffffff?text=DLH"
-          alt="Icon"
-        />
+                <Image src={ProjectImage} alt="Icon" />
+
         <h4>Digital Learning Hub</h4>
         <p>
           Освітній хаб, що надає доступ до сучасних курсів та ресурсів для
           розвитку цифрових навичок.
         </p>
-        <a href="#" className={styles["card-link"]}>
+        <Link href="/projects/1" className={styles["card-link"]}>
           Детальніше
-        </a>
+        </Link>
       </div>
       <div className={styles.card}>
-        <img
-          src="https://placehold.co/80x80/3a6df0/ffffff?text=DLH"
-          alt="Icon"
-        />
+                <Image src={ProjectImage} alt="Icon" />
+
         <h4>Digital Learning Hub</h4>
         <p>
           Освітній хаб, що надає доступ до сучасних курсів та ресурсів для
           розвитку цифрових навичок.
         </p>
-        <a href="#" className={styles["card-link"]}>
+        <Link href="/projects/1" className={styles["card-link"]}>
           Детальніше
-        </a>
+        </Link>
       </div>
     </>
   );
@@ -241,12 +236,6 @@ export default async function Home() {
             </div>
 
             <div className={styles["cards-grid"]}>
-              {/* <div className={styles.card}>
-                <img src="https://placehold.co/80x80/3a6df0/ffffff?text=DLH" alt="Icon" />
-                <h4>Digital Learning Hub</h4>
-                <p>Освітній хаб, що надає доступ до сучасних курсів та ресурсів для розвитку цифрових навичок.</p>
-                <a href="#" className={styles['card-link']}>Детальніше</a>
-              </div> */}
               {posts?.data ? (
                 posts?.data?.map((post) => {
                   const img_prev =
@@ -257,8 +246,8 @@ export default async function Home() {
                       {img_prev ? (
                         <img src={img_prev} alt="Preview project" />
                       ) : (
-                        <img
-                          src="https://placehold.co/80x80/3a6df0/ffffff?text=DLH"
+                        <Image
+                          src={ProjectImage}
                           alt="Icon"
                         />
                       )}
@@ -267,9 +256,9 @@ export default async function Home() {
                         Освітній хаб, що надає доступ до сучасних курсів та
                         ресурсів для розвитку цифрових навичок.
                       </p>
-                      <a href={post?.link} className={styles["card-link"]}>
+                      <Link href={post?.link} className={styles["card-link"]}>
                         Детальніше
-                      </a>
+                      </Link>
                     </div>
                   );
                 })
@@ -289,9 +278,9 @@ export default async function Home() {
                 <span>СТВОРЮЙ</span>
                 <span>НАДИХАЙ!</span>
               </h1>
-              <a href="#" className={clsx(styles.btn, styles["btn-primary"])}>
+              <Link href="/projects/1" className={clsx(styles.btn, styles["btn-primary"])}>
                 Приєднатися
-              </a>
+              </Link>
             </div>
             <div className={styles["cta-description"]}>
               <p>

@@ -474,15 +474,17 @@
 .cta-title span {
   display: inline-block;
   position: relative;
+  line-height: 6rem;
+  margin-bottom: 2rem;
 }
 
-.cta-title span:not(:last-child)::after {
+.cta-title span::after {
   content: '';
   position: absolute;
-  bottom: 5px;
+  bottom: -0.25rem;
   left: 0;
   width: 100%;
-  height: 4px;
+  height: 1px;
   background-color: var(--text-white);
   z-index: -1;
 }
@@ -555,6 +557,8 @@
 
 .featured-case {
   gap: 1rem;
+  padding-left: 0;
+  padding-right: 0;
 }
   .case-logo h3 {
   font-size: 1.5rem;
@@ -574,7 +578,7 @@
   font-size: 1.5rem;
 }
 .case-info p{
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 .case-info a{
   margin: 0 auto  ;
@@ -590,7 +594,7 @@
   }
   .hero {
     padding: 20px;
-    padding-top: 120px;
+    padding-top: 60px;
     text-align: center;
   }
   .hero-container {
@@ -601,8 +605,12 @@
     max-width: 100%;
   }
   .hero-content h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
     word-break:normal;
+  }
+  .hero-content p {
+    font-size: 1rem;
+    max-width: 100%;
   }
   .mission-image img{
     height: 340px;

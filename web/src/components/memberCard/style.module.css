@@ -161,3 +161,10 @@
     .fullName { font-size: 1.4rem; }
     .content { padding: 1.25rem; }
 }
+
+@media (max-width:1024px) {
+    .imageContainer{
+        max-height: 35vh;
+        overflow: hidden;
+    }
+}
