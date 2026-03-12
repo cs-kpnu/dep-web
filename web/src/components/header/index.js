@@ -27,19 +27,19 @@ function Header() {
     return (
         <div className="header" id="header">
             <header>
-                <a href="main.html" className="header-logo">
+                <Link href="/" className="header-logo">
                     <div className="header-logo-image">
                         <Image src={Logo} alt="Logo" />
                     </div>
                     <div className="header-logo-text">Цифрова кафедра</div>
-                </a>
+                </Link>
 
                 <div className="burger-btn" onClick={handleOpenMenu}>
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
-
+ 
                 <div className={clsx("menu-wrapper", isMenuOpen && "active")}>
                     <nav className={clsx("menu", isMenuOpen && "active")}>
                         <ul>

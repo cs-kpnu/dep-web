@@ -32,25 +32,10 @@ a {
     color-scheme: dark;
   }
 }
-/* body {
-  width: 100%;
-  margin: 0;
-
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.header {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-} */
 
 :root {
-  --bg-dark: #0a0a1a;
+  --bg-dark: #000;
+  /* --bg-dark: #0a0a1a; */
   --bg-darker: #050510;
   --bg-card: #141428;
   --primary-blue: #3a6df0;
@@ -72,6 +57,7 @@ a {
 }
 
 html {
+  font-size: 18px;
   scroll-behavior: smooth;
 }
 
@@ -81,8 +67,12 @@ body {
   color: var(--text-white);
   line-height: 1.6;
   overflow-x: hidden;
+
 }
 
+.home{
+  font-size: 18px;
+}
 main {
   min-height: 65vh;
 }
@@ -340,6 +330,10 @@ header {
   margin: 0 auto;
 
   padding: 30px 16px;
+  background: transparent;
+}
+
+.header{
   background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
 }
 
@@ -653,6 +647,9 @@ header {
   .burger-btn {
     display: flex;
   }
+  footer .footer-main {
+    padding-top: 1.25rem;
+  }
 }
 
 @media (max-width: 600px) {
@@ -714,15 +711,18 @@ footer {
   display: flex;
   flex-direction: column;
   font-weight: 400;
+  word-wrap: none;
 }
 
 .logo-text-title {
-  font-size: 16px;
+  font-size: 1.25rem;
   line-height: 24px;
+  white-space: nowrap;
+  margin-bottom: 6px;
 }
 
 .logo-text-subtitle {
-  font-size: 12px;
+  font-size: 0.875rem;
   line-height: 20px;
 }
 
@@ -778,13 +778,14 @@ footer {
 
 .footer-useful-links-title {
   font-weight: 500;
-  font-size: 14px;
+  font-size: 1rem;
   line-height: 24px;
 }
 
 .footer-useful-links a {
   font-weight: 400;
-  font-size: 12px;
+  font-size: 1rem;
+  font-weight: 500;  
   line-height: 15px;
   color: white;
   text-decoration: none;
@@ -798,7 +799,7 @@ footer {
 .footer-contacts-title {
   width: 189px;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 1rem;
   line-height: 24px;
   letter-spacing: 0%;
   text-transform: uppercase;
@@ -844,8 +845,8 @@ footer {
 .contact-item-text {
   width: 207px;
   font-weight: 300;
-  font-size: 13.5px;
-  line-height: 15px;
+  font-size: 1rem;
+  line-height: 1.25rem;
   color: rgba(205, 210, 216, 1);
   transition: 0.3s ease;
 }
