@@ -32,7 +32,7 @@ const EventCard = ({ event }) => {
                 <div className={styles.publications}>
                     <p className={styles.label}>ПУБЛІКАЦІЇ:</p>
                     {links.map((link, idx) => (
-                        <a key={idx} href={link.url} className={styles.link}>
+                        <a key={idx} href={link.url} target="_blank" className={styles.link}>
                             🔗 {link.text}
                         </a>
                     ))}

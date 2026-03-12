@@ -229,9 +229,9 @@ export default async function Home() {
                   ефективно розриваючи "замкнене коло першої роботи" для молоді
                   та надаючи роботодавцям доступ до перевірених талантів.
                 </p>
-                <a href="#" className={clsx(styles.btn, styles["btn-primary"])}>
+                <Link href="/projects/1" className={clsx(styles.btn, styles["btn-primary"])}>
                   Детальніше
-                </a>
+                </Link>
               </div>
             </div>
 
