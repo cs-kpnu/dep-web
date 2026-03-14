@@ -20,7 +20,7 @@ export default function Home() {
     const [selected, setSelected] = useState('Фільтри');
     const [searchTerm, setSearchTerm] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const options = ['Всі', 'Активний', 'У розробці', 'Завершено', "Шлак_тест"];
+    const options = ['Всі', 'Активний', 'У розробці', 'Завершено'];
 
     //mock for projects cards
     const mockProjects = useMemo(() => [

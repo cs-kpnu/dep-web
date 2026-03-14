@@ -31,11 +31,13 @@ const EventCard = ({ event }) => {
 
                 <div className={styles.publications}>
                     <p className={styles.label}>ПУБЛІКАЦІЇ:</p>
-                    {links.map((link, idx) => (
+                    <div className={styles['link-wrapper']}>
+                        {links.map((link, idx) => (
                         <a key={idx} href={link.url} target="_blank" className={styles.link}>
                             🔗 {link.text}
                         </a>
                     ))}
+                    </div>   
                 </div>
 
                 <footer className={styles.footer}>

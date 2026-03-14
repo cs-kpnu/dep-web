@@ -16,7 +16,7 @@ import Project3Image from "../../assets/project-images/project3.svg"
 
 export default function EventsPage() {
     const [isOpen, setIsOpen] = useState(false);
-    const [selected, setSelected] = useState('За весь час');
+    const [selected, setSelected] = useState('Фільтри');
     const [searchTerm, setSearchTerm] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
 

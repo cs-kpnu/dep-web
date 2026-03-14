@@ -40,6 +40,14 @@
   background-color: #2955d9;
   transform: translateY(-2px);
 }
+.arrow {
+    margin-left: 8px;
+    transition: transform 0.2s ease;
+}
+
+.detailsBtn:hover .arrow {
+    transform: translateX(4px);
+}
 
 .header {
   padding: 20px 0;

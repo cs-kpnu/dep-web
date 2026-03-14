@@ -184,7 +184,7 @@
     }
 
     .selectWrapper {
-        width: 180px;
+        width: 240px;
     }
     .cardWrapper {
         flex: 0 1 calc(50% - 12px);

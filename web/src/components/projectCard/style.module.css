@@ -66,7 +66,7 @@
 }
 
 .categoryText {
-    color: #a1a1aa;
+    color: #d0d0e0;
     font-size: clamp(0.8125rem, 0.5vw + 0.5rem, 0.9375rem);
     font-weight: 500;
 }
@@ -82,13 +82,13 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    color: #a1a1aa;
+    color: #d0d0e0;
     font-size: clamp(0.75rem, 0.4vw + 0.5rem, 0.875rem);
 }
 
 .description {
     text-align: left;
-    color: #71717a;
+    color: #d0d0e0;
     font-size: clamp(0.875rem, 0.6vw + 0.6rem, 1.0625rem);
     line-height: 1.5;
     margin-bottom: clamp(1.25rem, 2vw, 2rem);

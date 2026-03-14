@@ -230,7 +230,7 @@ export default async function Home() {
                   та надаючи роботодавцям доступ до перевірених талантів.
                 </p>
                 <Link href="/projects/1" className={clsx(styles.btn, styles["btn-primary"])}>
-                  Детальніше
+                  Детальніше<span className={styles.arrow}>→</span>
                 </Link>
               </div>
             </div>
@@ -279,7 +279,7 @@ export default async function Home() {
                 <span>НАДИХАЙ!</span>
               </h1>
               <Link href="/projects/1" className={clsx(styles.btn, styles["btn-primary"])}>
-                Приєднатися
+                Приєднатися<span className={styles.arrow}>→</span>
               </Link>
             </div>
             <div className={styles["cta-description"]}>
