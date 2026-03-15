@@ -7,6 +7,8 @@ import ProjectCard from "@/components/projectCard";
 import Pagination from "@/components/paginator";
 import clsx from "clsx";
 
+import {mockProjects as projectsData} from "@/data/mockProjects";
+
 /*
 * temporary dev images imports for testing purposes
 * TODO: delete after implementation
@@ -22,36 +24,23 @@ export default function Home() {
     const [currentPage, setCurrentPage] = useState(1);
     const options = ['Всі', 'Активний', 'У розробці', 'Завершено'];
 
+    const mockedProjectsFromFile = projectsData.map((project) => ({
+        ...project,
+        startDate: project.launchDate,
+        participants: project.participants.map((p) => p.name).join(", "),
+        imageUrl: Project1Image,
+    }));
     //mock for projects cards
     const mockProjects = useMemo(() => [
-        {
-            id: "1",
-            title: "Digital Learning Hub",
-            status: "Завершено",
-            category: "Освіта",
-            startDate: "12 04 2026 р.",
-            participants: "3 учасники",
-            description: "Інтегроване освітнє середовище та мобільна платформа для здобувачів освіти, орієнтована на автоматизацію вибору дисциплін, розподіл навчального навантаження, доступ до навчальної інформації, моніторинг прогресу та підтримку академічної взаємодії.",
-            imageUrl: Project1Image
-        },
-        {
-            id: "2",
-            title: "Interest project",
-            status: "У розробці",
-            category: "Технології",
-            startDate: "15 05 2026 р.",
-            participants: "5 учасників",
-            description: "Експериментальний проект, спрямований на дослідження нових методів взаємодії користувача з інтерфейсом у реальному часі.",
-            imageUrl: Project2Image
-        },
+        ...mockedProjectsFromFile,
         // Автоматична генерація решти 87 проєктів для тесту пагінації
         ...Array.from({ length: 87 }, (_, i) => {
             const statuses = ['Завершено', 'У розробці', 'Активний'];
             const currentStatus = statuses[i % statuses.length]; // Чергуємо статуси для тесту кольорів лейблів
 
             return {
-                id: (i + 3).toString(),
-                title: `Project ${i + 3}`,
+                id: (i + 4).toString(),
+                title: `Project ${i + 4}`,
                 status: currentStatus,
                 category: "Освіта",
                 startDate: "xx місяць xxxx р.",
