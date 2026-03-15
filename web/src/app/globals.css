@@ -1,3 +1,5 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 :root {
   --background: #000000;
   --foreground: #ffffff;
@@ -45,7 +47,7 @@ a {
   --text-gray: #b0b0c0;
   --gradient-main: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
   --gradient-glow: radial-gradient(circle at center, rgba(58, 109, 240, 0.3) 0%, rgba(10, 10, 26, 0) 70%);
-  --font-main: 'Montserrat', sans-serif;
+  --font-main: 'Inter';
 }
 
 *,
