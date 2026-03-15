@@ -153,7 +153,7 @@
 
 .cardWrapper {
     /* Mobile First: 1 колонка */
-    flex: 1 1 100%;
+    flex: 0 0 100%;
     display: flex;
 }
 
@@ -171,7 +171,7 @@
 /* Tablet: 2 колонки */
 @media (min-width: 768px) {
     .cardWrapper {
-        flex: 0 1 calc(50% - 12px);
+         flex: 0 1 calc(50% - 16px);
     }
     .filtersWrapper {
         flex-direction: row;
@@ -181,7 +181,7 @@
         flex: 1;
     }
     .selectWrapper {
-        width: 180px;
+        width: 240px;
     }
 }
 
@@ -191,6 +191,6 @@
         padding: 60px
     }
     .cardWrapper {
-        flex: 0 1 calc(33.333% - 16px);
+        flex: 0 1 calc(33.333% - 20px);
     }
 }
