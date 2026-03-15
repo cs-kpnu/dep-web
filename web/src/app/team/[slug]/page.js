@@ -1,25 +1,20 @@
 import Image from "next/image";
-import styles from "./first.module.css";
-import { history } from "next/navigation";
-import {
-  Code2,
-  Globe,
-  Briefcase,
-  ExternalLink,
-  ChevronDown,
-  ArrowLeft,
-} from "lucide-react";
+import { notFound } from "next/navigation";
+import { Code2, Globe, Briefcase, ExternalLink } from "lucide-react";
 
 import JobsAccordion from "@/components/jobsAccordion";
 import Breadcrumb from "@/components/breadcrumb";
+import { mockTeam } from "@/data/mockTeam";
+import styles from "./first.module.css";
 
-import Lead1 from "@/assets/team-photo-mock/member1.jpg";
-import Link from "next/link";
+export default async function Profile({ params }) {
+  const { slug } = await params;
+  const member = mockTeam.find((m) => m.id === slug);
 
-export default function Profile() {
-  function goBack() {
-    history.back();
+  if (!member) {
+    notFound();
   }
+
   return (
     <main className={styles.pageContainer}>
       <Breadcrumb to="/team" text="Назад до команди" />
@@ -28,10 +23,9 @@ export default function Profile() {
       <section className={styles.profileHero}>
         <div className={styles.leftColumn}>
           <div className={styles.imageWrapper}>
-            {/* Replace src with your actual image path */}
-            <Image
-              src={Lead1}
-              alt="Іванюк Віталій Анатолійович"
+            <img
+              src={`${process.env.NEXT_PUBLIC_SITE_URL || ""}${member.photo}`}
+              alt={member.name}
               width={300}
               height={300}
               className={styles.profileImage}
@@ -39,41 +33,23 @@ export default function Profile() {
           </div>
           <div className={styles.badges}>
             <div className={`${styles.badge} ${styles.badgePrimary}`}>
-              КЕРІВНИК
+              {member.roleLabel}
             </div>
             <div className={`${styles.badge} ${styles.badgeSuccess}`}>
-              АКТИВНИЙ
+              {member.statusLabel}
             </div>
           </div>
         </div>
 
         <div className={styles.rightColumn}>
-          <h1 className={styles.name}>Іванюк Віталій Анатолійович</h1>
+          <h1 className={styles.name}>{member.name}</h1>
 
           <div className={styles.infoBlock}>
+            {member.bio.map((paragraph, i) => (
+              <p key={i} dangerouslySetInnerHTML={{ __html: paragraph }} />
+            ))}
             <p>
-              <strong>Завідувач кафедри</strong> комп'ютерних наук.
-            </p>
-            <p>
-              <strong>Доцент кафедри</strong> інформатики (атестат 12ДЦ №043524
-              30.06.2015 р.).
-            </p>
-            <p>
-              <strong>Доктор технічних наук</strong> за спеціальністю 01.05.02 —
-              "Математичне моделювання та обчислювальні методи" (Диплом ДД
-              №0102356 24.09.2020 р.). Тема дисертації: "Методи та засоби
-              математичного моделювання динамічних процесів в об'єктах із
-              розподіленими параметрами на основі одновимірних інтегральних
-              моделей".
-            </p>
-            <p>
-              <strong>Гарант освітньої програми</strong> "Комп'ютерні науки та
-              інформаційні технології" другого (магістерського) рівня вищої
-              освіти.
-            </p>
-            <p>Голова громадської організації "ІТ Кам'янець".</p>
-            <p>
-              <strong>Дата народження :</strong> 05.04.1986
+              <strong>Дата народження:</strong> {member.birthDate}
             </p>
           </div>
         </div>
@@ -89,17 +65,19 @@ export default function Profile() {
           </div>
           <h4>HARD-skills</h4>
           <div className={styles.tagsContainer}>
-            <span className={styles.tag}>React</span>
-            <span className={styles.tag}>Node.js</span>
-            <span className={styles.tag}>TypeScript</span>
-            <span className={styles.tag}>MySQL</span>
-            <span className={styles.tag}>Git / GitHub</span>
+            {member.skills.hard.map((skill) => (
+              <span key={skill} className={styles.tag}>
+                {skill}
+              </span>
+            ))}
           </div>
           <h4>SOFT-skills</h4>
           <div className={styles.tagsContainer}>
-            <span className={styles.tag}>English B2</span>
-            <span className={styles.tag}>Problem solving</span>
-            <span className={styles.tag}>Communication</span>
+            {member.skills.soft.map((skill) => (
+              <span key={skill} className={styles.tag}>
+                {skill}
+              </span>
+            ))}
           </div>
         </div>
 
@@ -112,18 +90,12 @@ export default function Profile() {
             <h3>Іноземні мови</h3>
           </div>
           <div className={styles.languagesGrid}>
-            <div className={styles.languageItem}>
-              <span>Українська</span>
-              <span className={styles.level}>Рідна</span>
-            </div>
-            <div className={styles.languageItem}>
-              <span>Англійська</span>
-              <span className={styles.level}>B1</span>
-            </div>
-            <div className={styles.languageItem}>
-              <span>Німецька</span>
-              <span className={styles.level}>B1</span>
-            </div>
+            {member.languages.map((lang) => (
+              <div key={lang.name} className={styles.languageItem}>
+                <span>{lang.name}</span>
+                <span className={styles.level}>{lang.level}</span>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -139,20 +111,35 @@ export default function Profile() {
             Учасник брав участь у таких проєктах:
           </p>
           <ul className={styles.projectList}>
-            <li className={styles.projectItem}>
-              <span>Time management system</span>
-              <ExternalLink size={16} className={styles.externalIcon} />
-            </li>
-            <li className={styles.projectItem}>
-              <span>Система для вибору дисциплін</span>
-              <ExternalLink size={16} className={styles.externalIcon} />
-            </li>
-            <li className={styles.projectItem}>
-              <span>Digital Learning Hub</span>
-              <ExternalLink size={16} className={styles.externalIcon} />
-            </li>
+            {member.projects.map((project) => (
+              <li key={project.id} className={styles.projectItem}>
+                <span>{project.name}</span>
+                <ExternalLink size={16} className={styles.externalIcon} />
+              </li>
+            ))}
           </ul>
         </div>
+
+        {member.publications.length > 0 && (
+          <>
+            <hr className={styles.divider} />
+            <div className={styles.section}>
+              <div className={styles.sectionHeader}>
+                <h3>Публікації</h3>
+              </div>
+              <ul className={styles.projectList}>
+                {member.publications.map((pub) => (
+                  <li key={pub.name} className={styles.projectItem}>
+                    <a href={pub.url} target="_blank" rel="noopener noreferrer">
+                      {pub.name}
+                    </a>
+                    <ExternalLink size={16} className={styles.externalIcon} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
+        )}
       </section>
 
       <JobsAccordion />

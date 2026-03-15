@@ -6,6 +6,8 @@ import MemberCard from "@/components/memberCard";
 import Pagination from "@/components/paginator";
 import clsx from "clsx";
 
+import {mockTeam as teamData} from "@/data/mockTeam";
+
 /*
 * temporary dev images imports for testing purposes
 * TODO: delete after implementation
@@ -21,20 +23,27 @@ export default function TeamPage() {
     // Оновлені опції відповідно до статусів команди
     const options = ['Всі', 'Керівник', 'Ментор', 'Учасник'];
 
-    const mockTeam = useMemo(() => [
+    const ROLE_MAP = { керівник: "Керівник", ментор: "Ментор", студент: "Учасник" };
+
+    const mockedTeamFromFile = teamData.map(({ name, role, projects, status, joinDate, ...member }) => {
+      const [lastName = "", firstName = "", patronymic = ""] = name.split(" ");
+      return {
+        ...member,
+        lastName,
+        firstName,
+        patronymic,
+        role: ROLE_MAP[role] ?? "Учасник",
+        status,
+        imageUrl: UserImage,
+        projects: projects.map((proj) => proj.name),
+        teamDate: joinDate,
+      };
+    });
+
+    const mockTeam = useMemo(
+      () => [
         // 3 Керівники (Активні)
-        ...Array(3).fill(null).map((_, i) => ({
-            id: `lead-${i}`,
-            lastName: 'Іванюк',
-            firstName: 'Віталій',
-            patronymic: 'Анатолійович',
-            role: 'Керівник',
-            status: 'Активний',
-            degree: 'Доктор технічних наук, доцент, завідувач кафедри комп’ютерних наук',
-            teamDate: '1 вересня 2024 р.',
-            projects: ['AI Platform', 'Cloud Services'],
-            imageUrl: UserImage
-        })),
+        ...mockedTeamFromFile,
 
         // 3 Ментори (Активні)
         ...Array(3).fill(null).map((_, i) => ({
