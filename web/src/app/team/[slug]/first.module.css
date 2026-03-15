@@ -5,8 +5,8 @@
   --text-primary: #ffffff;
   --text-secondary: #a1a1aa;
   --border-color: #27272a;
-  --accent-blue: #4f46e5;
-  --accent-blue-light: #818cf8;
+  --accent-blue: #3a6df0;
+  --accent-blue-light: #3a6df0;
   --accent-green: #22c55e;
 
   /* background-color: var(--bg-dark); */
@@ -26,7 +26,8 @@
 .profileHero {
   display: flex;
   gap: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 2.5rem;
 }
 
 .leftColumn {

@@ -10,7 +10,7 @@
 }
 
 .breadcrumbLink {
-  color: var(--accent-blue-light);
+  color: var(--accent-blue);
   cursor: pointer;
 
   display: flex;

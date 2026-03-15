@@ -87,12 +87,19 @@ export default function Profile() {
             <Code2 className={styles.iconBlue} size={20} />
             <h3>Технології</h3>
           </div>
+          <h4>HARD-skills</h4>
           <div className={styles.tagsContainer}>
             <span className={styles.tag}>React</span>
             <span className={styles.tag}>Node.js</span>
             <span className={styles.tag}>TypeScript</span>
             <span className={styles.tag}>MySQL</span>
             <span className={styles.tag}>Git / GitHub</span>
+          </div>
+          <h4>SOFT-skills</h4>
+          <div className={styles.tagsContainer}>
+            <span className={styles.tag}>English B2</span>
+            <span className={styles.tag}>Problem solving</span>
+            <span className={styles.tag}>Communication</span>
           </div>
         </div>
 

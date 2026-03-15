@@ -1,10 +1,21 @@
 import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 import styles from "./style.module.css";
 import { Calendar, Users, Tag, AlignLeft, ExternalLink } from "lucide-react";
 
 import Breadcrumb from "@/components/breadcrumb";
+import { mockProjects } from "@/data/mockProjects";
 
-export default function PortfolioProject() {
+export default async function PortfolioProject({ params }) {
+  const {slug} = await params;
+  console.log("Project Slug:", slug);
+  const project = mockProjects.find((p) => p.id === slug);
+
+  if (!project) {
+    notFound();
+  }
+
   return (
     <main className={styles.pageContainer}>
       <Breadcrumb to="/projects" text="Назад до проєктів" />
@@ -12,22 +23,19 @@ export default function PortfolioProject() {
       {/* Project Hero Header */}
       <div className={styles.projectHeader}>
         <div className={styles.titleSection}>
-          <h1 className={styles.title}>Digital Learning Hub</h1>
+          <h1 className={styles.title}>{project.title}</h1>
           <div className={styles.badges}>
-            <span className={`${styles.badge} ${styles.badgeCategory}`}>
-              EdTech
-            </span>
             <span className={`${styles.badge} ${styles.badgeStatus}`}>
-              В розробці
+              {project.status}
             </span>
           </div>
         </div>
 
-        {/* Cover Image Placeholder */}
+        {/* Cover Image */}
         <div className={styles.coverImageWrapper}>
           <Image
-            src="/project.png"
-            alt="Digital Learning Hub Cover"
+            src={project.coverImage}
+            alt={`${project.title} Cover`}
             fill
             className={styles.coverImage}
           />
@@ -42,20 +50,13 @@ export default function PortfolioProject() {
             <div className={styles.sectionHeader}>
               <AlignLeft className={styles.iconBlue} size={24} />
               <h1>Опис проєкту</h1>
+               <span className={`${styles.badge} ${styles.badgeCategory}`}>
+              {project.category}
+            </span>
             </div>
             <div className={styles.description}>
               <p>
-                <strong>Digital Learning Hub</strong> — це інноваційна платформа
-                для об'єднання студентів, викладачів та менторів з ІТ-індустрії.
-                Основна мета проєкту полягає у створенні єдиного цифрового
-                середовища, де кожен учасник освітнього процесу може зручно
-                відслідковувати свій прогрес, отримувати фідбек та брати участь
-                у реальних стартапах.
-              </p>
-              <p>
-                Система включає в себе модулі гейміфікації, трекінгу задач та
-                інтеграцію з популярними системами контролю версій
-                (GitHub/GitLab) для автоматичної оцінки практичних робіт.
+                <strong>{project.title}</strong> — {project.description}
               </p>
             </div>
           </div>
@@ -65,19 +66,7 @@ export default function PortfolioProject() {
               <h1>Технології</h1>
             </div>
             <div className={styles.description}>
-              <p>
-                Проєкт розробляється з використанням сучасного стеку технологій,
-                включаючи React для фронтенду, Node.js та Express для бекенду, а
-                також MongoDB для зберігання даних. Для забезпечення високої
-                продуктивності та масштабованості використовується Docker та
-                Kubernetes.
-              </p>
-              <p>
-                Крім того, інтеграція з GitHub/GitLab дозволяє автоматизувати
-                процес оцінки та надання фідбеку студентам на основі їхніх
-                комітів та пул-реквестів, що значно підвищує ефективність
-                навчального процесу.
-              </p>
+              <p>{project.technologies}</p>
             </div>
           </div>
         </div>
@@ -94,14 +83,14 @@ export default function PortfolioProject() {
                   <Calendar size={18} className={styles.metaIcon} />
                   <span>Дата запуску</span>
                 </div>
-                <span className={styles.metaValue}>Вересень 2023</span>
+                <span className={styles.metaValue}>{project.launchDate}</span>
               </li>
               <li className={styles.metaItem}>
                 <div className={styles.metaLabel}>
                   <Tag size={18} className={styles.metaIcon} />
                   <span>Категорія</span>
                 </div>
-                <span className={styles.metaValue}>Освітні технології</span>
+                <span className={styles.metaValue}>{project.categoryLabel}</span>
               </li>
             </ul>
           </div>
@@ -114,33 +103,21 @@ export default function PortfolioProject() {
             </div>
 
             <ul className={styles.participantsList}>
-              <li className={styles.participantItem}>
-                <div className={styles.participantInfo}>
-                  <span className={styles.participantName}>Іванюк Віталій</span>
-                  <span className={styles.participantRole}>Ментор / PM</span>
-                </div>
-                <ExternalLink size={16} className={styles.externalIcon} />
-              </li>
-              <li className={styles.participantItem}>
-                <div className={styles.participantInfo}>
-                  <span className={styles.participantName}>
-                    Олександр Ткаченко
-                  </span>
-                  <span className={styles.participantRole}>
-                    Frontend Developer
-                  </span>
-                </div>
-                <ExternalLink size={16} className={styles.externalIcon} />
-              </li>
-              <li className={styles.participantItem}>
-                <div className={styles.participantInfo}>
-                  <span className={styles.participantName}>
-                    Марія Коваленко
-                  </span>
-                  <span className={styles.participantRole}>UI/UX Designer</span>
-                </div>
-                <ExternalLink size={16} className={styles.externalIcon} />
-              </li>
+              {project.participants.map((participant) => (
+                <li key={participant.name} className={styles.participantItem}>
+                  <div className={styles.participantInfo}>
+                    <span className={styles.participantName}>
+                      {participant.name}
+                    </span>
+                    <span className={styles.participantRole}>
+                      {participant.role}
+                    </span>
+                  </div>
+                  <Link href={participant.profileLink} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink size={16} className={styles.externalIcon} />
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </aside>
