@@ -8,11 +8,12 @@ import MainImage from "@/assets/img/mission-section-image.png";
 import YoutIMage from "@/assets/img/yout_force.png";
 import ProjectImage from "@/assets/img/case1.png";
 import styles from "./page.module.css";
+import { mockProjects } from "@/data/mockProjects";
 
 async function getPage(params) {
   try {
-   const data =  await api.get("/pages/2?_embed");
-   return data;
+    const data = await api.get("/pages/2?_embed");
+    return data;
   } catch (error) {
     console.error("Error fetching page:", error);
     // throw error;
@@ -20,8 +21,8 @@ async function getPage(params) {
 }
 async function getPosts(params) {
   try {
-     const data =  await api.get("/posts?_embed&per_page=3");
-     return data;
+    const data = await api.get("/posts?_embed&per_page=3");
+    return data;
   } catch (error) {
     console.error("Error fetching posts:", error);
     // throw error;
@@ -40,41 +41,19 @@ export async function generateMetadata() {
 function MockedProjects() {
   return (
     <>
-      <div className={styles.card}>
-                <Image src={ProjectImage} alt="Icon" />
-        <h4>Digital Learning Hub</h4>
-        <p>
-          Освітній хаб, що надає доступ до сучасних курсів та ресурсів для
-          розвитку цифрових навичок.
-        </p>
-        <Link href="/projects/1" className={styles["card-link"]}>
-          Детальніше
-        </Link>
-      </div>
-      <div className={styles.card}>
-                <Image src={ProjectImage} alt="Icon" />
-
-        <h4>Digital Learning Hub</h4>
-        <p>
-          Освітній хаб, що надає доступ до сучасних курсів та ресурсів для
-          розвитку цифрових навичок.
-        </p>
-        <Link href="/projects/1" className={styles["card-link"]}>
-          Детальніше
-        </Link>
-      </div>
-      <div className={styles.card}>
-                <Image src={ProjectImage} alt="Icon" />
-
-        <h4>Digital Learning Hub</h4>
-        <p>
-          Освітній хаб, що надає доступ до сучасних курсів та ресурсів для
-          розвитку цифрових навичок.
-        </p>
-        <Link href="/projects/1" className={styles["card-link"]}>
-          Детальніше
-        </Link>
-      </div>
+      {mockProjects.map((project) => (
+        <div key={project.id} className={styles.card}>
+          <Image src={ProjectImage} alt="Icon" />
+          <h4>{project.title}</h4>
+          <p>{project.description}</p>
+          <Link
+            href={`/projects/${project.id}`}
+            className={styles["card-link"]}
+          >
+            Детальніше
+          </Link>
+        </div>
+      ))}
     </>
   );
 }
@@ -111,9 +90,9 @@ export default async function Home() {
                 <p dangerouslySetInnerHTML={{ __html: description }}></p>
               ) : (
                 <p>
-                  Ми реалізуємо вагомі IT-рішення, посилюючи
-                  громадянську позицію молоді, та формуємо партнерство з
-                  провідними технічними спеціалістами й організаціями галузі.
+                  Ми реалізуємо вагомі IT-рішення, посилюючи громадянську
+                  позицію молоді, та формуємо партнерство з провідними
+                  технічними спеціалістами й організаціями галузі.
                 </p>
               )}
             </div>
@@ -229,7 +208,10 @@ export default async function Home() {
                   ефективно розриваючи "замкнене коло першої роботи" для молоді
                   та надаючи роботодавцям доступ до перевірених талантів.
                 </p>
-                <Link href="/projects/1" className={clsx(styles.btn, styles["btn-primary"])}>
+                <Link
+                  href="/projects/1"
+                  className={clsx(styles.btn, styles["btn-primary"])}
+                >
                   Детальніше<span className={styles.arrow}>→</span>
                 </Link>
               </div>
@@ -246,10 +228,7 @@ export default async function Home() {
                       {img_prev ? (
                         <img src={img_prev} alt="Preview project" />
                       ) : (
-                        <Image
-                          src={ProjectImage}
-                          alt="Icon"
-                        />
+                        <Image src={ProjectImage} alt="Icon" />
                       )}
                       <h4>{post?.title?.rendered}</h4>
                       <p>
@@ -278,7 +257,10 @@ export default async function Home() {
                 <span>СТВОРЮЙ</span>
                 <span>НАДИХАЙ!</span>
               </h1>
-              <Link href="/projects/1" className={clsx(styles.btn, styles["btn-primary"])}>
+              <Link
+                href="/projects/1"
+                className={clsx(styles.btn, styles["btn-primary"])}
+              >
                 Приєднатися<span className={styles.arrow}>→</span>
               </Link>
             </div>

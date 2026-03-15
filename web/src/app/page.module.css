@@ -414,6 +414,8 @@
   color: var(--text-gray);
   margin-bottom: 25px;
   font-size: 0.95rem;
+  max-height: 6rem;
+  overflow: hidden;
 }
 
 .card-link {
