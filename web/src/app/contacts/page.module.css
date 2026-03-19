@@ -25,8 +25,8 @@
   font-weight: 400;
   line-height: 32px;
   text-align: center;
-  margin: 0 auto 48px auto;
-  max-max-width: 800px;
+  margin: 0 auto 10px auto;
+  max-width: 800px;
 }
 
 .contacts-form {
@@ -113,8 +113,8 @@
 }
 
 .form {
+  width: 100%;
   max-width: 800px;
-  height: 793.8px;
   background: var(--form);
   border: 1.6px solid white;
   border-radius: 28px;
@@ -133,9 +133,11 @@
   font-weight: 400;
   top: -1.2px;
   margin-bottom: 8px;
+  width: 100%;
 }
 
 .form input:not([type='checkbox']) {
+  width: 100%;
   max-width:733px;
   padding: 12px 16px;
   border: 1.6px solid white;
@@ -152,6 +154,7 @@
 
 .form textarea {
   max-width:733px;
+  width: 100%;
   padding: 12px 16px;
   border: 1.6px solid white;
   border-radius: 14px;
@@ -176,7 +179,7 @@
   justify-content: flex-start;
   gap: 10px;
   height: 24px;
-  max-width:732.8px;
+  max-width:600px;
   margin-bottom: 24px;
   margin-top: 24px;
   box-sizing: border-box;
@@ -186,7 +189,7 @@
   padding: 0;
   line-height: 1;
   cursor: pointer;
-  text-align: center;
+  text-align: left;
 }
 #checkbox {
   min-width: 20px;
@@ -199,7 +202,6 @@
 
 .form .form-button {
   max-width:733px;
-  height: 56px;
   background-color: var(--panel);
   color: white;
   font-size: 16px;
@@ -209,6 +211,9 @@
   cursor: pointer;
   align-self: center;
   min-height: 56px;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
 }
 
 .contact-container {
@@ -270,6 +275,52 @@
 
 .img {
   display: inline;
+}
+
+.type-select {
+  max-width: 733px;
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.6px solid white;
+  border-radius: 14px;
+  background: var(--panel);
+  color: #ffffff;
+  font-size: 16px;
+  font-family: 'Arial';
+  box-sizing: border-box;
+  min-height: 50px;
+  margin-bottom: 24px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
+
+.type-select option {
+  background: var(--panel);
+  color: #ffffff;
+}
+
+.type-select:focus {
+  outline: none;
+  border-color: #4b6cff;
+}
+
+.form-success {
+  color: #4ade80;
+  font-size: 14px;
+  font-family: 'Arial';
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.form-error {
+  color: #f87171;
+  font-size: 14px;
+  font-family: 'Arial';
+  margin-bottom: 12px;
+  text-align: center;
 }
 
 @media (max-width: 992px) {
