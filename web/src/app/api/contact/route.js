@@ -20,12 +20,12 @@ export async function POST(request) {
         });
 
         await transporter.sendMail({
-            from: `"Цифрова кафедра" <${process.env.SMTP_USER}>`,
+            from: `"Цифрова кафедра" <${process.env.SMTP_USER_SENDER}>`,
             to: process.env.CONTACT_RECEIVER_EMAIL || process.env.SMTP_USER,
             replyTo: email,
             subject: `[${type}] Нове звернення від ${name} ${surname}`,
             html: `
-                <h2>Нове звернення з сайту</h2>
+                <h2>Нове звернення з сайту цифрової кафедри</h2>
                 <p><strong>Тип звернення:</strong> ${type}</p>
                 <p><strong>Ім'я:</strong> ${name} ${surname}</p>
                 <p><strong>Email:</strong> ${email}</p>
