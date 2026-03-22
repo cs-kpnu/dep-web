@@ -24,7 +24,7 @@ export default async function Profile({ params }) {
         <div className={styles.leftColumn}>
           <div className={styles.imageWrapper}>
             <img
-              src={`${process.env.NEXT_PUBLIC_SITE_URL || ""}${member.photo}`}
+              src={`/users-profile-images/${member.photo}`}
               alt={member.name}
               width={300}
               height={300}

@@ -1,101 +1,261 @@
+const PERSONAL_PAGE_BASE_URL = `${process.env.NEXT_PUBLIC_SITE_URL}/team`
 export const mockProjects = [
-  {
+    {
     id: "1",
-    title: "Digital Learning Hub",
-    category: "EdTech",
+    title: "Nexus",
+    category: "Management",
     categoryLabel: "Освітні технології",
     status: "Завершено",
-    coverImage: "/project.png",
-    launchDate: "Вересень 2023",
+    coverImage: "/project2.png",
+    launchDate: "Вересень 2025",
     description:
-      "Digital Learning Hub - це інноваційна платформа для об'єднання студентів, викладачів та менторів з ІТ-індустрії. Основна мета проєкту полягає у створенні єдиного цифрового середовища, де кожен учасник освітнього процесу може зручно відслідковувати свій прогрес, отримувати фідбек та брати участь у реальних стартапах.",
+      "Рішення створене для перетворення хаосу студентських розробок на структурований інженерний процес. Ми побудували «цифровий фундамент», який дозволяє миттєво розгортати професійне робоче середовище, об’єднуючи контроль за документацією, централізовану комунікацію та єдині стандарти керування кодом. Система забезпечує структурований підхід роботи від ідеї до реалізації, дозволяючи за лічені хвилини створити все необхідне для нових проєктів: від структурованих сховищ документації до налаштованих GitHub-репозиторіїв. Nexus гарантує прозорість процесів та дозволяє командам фокусуватися на створенні продукту, забезпечуючи учасникам миттєвий доступ до всіх артефактів проєкту.",
     technologies:
-      "Проєкт розробляється з використанням сучасного стеку технологій, включаючи React для фронтенду, Node.js та Express для бекенду, а також MongoDB для зберігання даних. Для забезпечення високої продуктивності та масштабованості використовується Docker та Kubernetes. Інтеграція з GitHub/GitLab дозволяє автоматизувати процес оцінки та надання фідбеку студентам.",
+      "Проєкт розробляється за допомогою No-code рішень, включаючи Google Workspace для створення, підтримки та доступу до артефактів проєктів, Discord - для комунікації. Доступ та реалізація коду здійснюється з урахуванням актуальних DevOps практик за допомогою Github.",
     participants: [
       {
         name: "Іванюк Віталій",
         role: "Team Lead",
         profileLink:
-          "https://cs.kpnu.edu.ua/2024/09/19/ivaniuk-vitalij-anatolijovych/",
+          PERSONAL_PAGE_BASE_URL+"/1",
       },
       {
         name: "Мястковськa Маринa",
         role: "Project Manager",
         profileLink:
-          "https://cs.kpnu.edu.ua/2019/11/04/miastkovska-maryna-oleksandrivna/",
+          PERSONAL_PAGE_BASE_URL+"/2",
       },
       {
         name: "Косінов Михайло",
-        role: "Developer",
+        role: "Engineer",
         profileLink:
-          "https://cs.kpnu.edu.ua/2024/09/19/kosinov-mykhailo-serhijovych/",
+          PERSONAL_PAGE_BASE_URL+"/3",
+      },
+      {
+        name: "Макуш Валерія",
+        role: "Engineer",
+        profileLink:
+          PERSONAL_PAGE_BASE_URL+"/6",
+      },
+      {
+        name: "Демченко Дмитро",
+        role: "Engineer",
+        profileLink:
+          PERSONAL_PAGE_BASE_URL+"/4",
+      },
+        {
+        name: "Гумельник Анатолій",
+        role: "Engineer",
+        profileLink:
+          PERSONAL_PAGE_BASE_URL+"/5",
       },
     ],
   },
   {
     id: "2",
-    title: "Interest Project",
-    category: "Технології",
-    categoryLabel: "Технології",
-    status: "У розробці",
-    coverImage: "/project.png",
-    launchDate: "Травень 2024",
+    title: "Fight Synk",
+    category: "SportsTech",
+    categoryLabel: "Спорт",
+    status: "Активний",
+    coverImage: "/fight-synk.png",
+    launchDate: "Травень 2025",
     description:
-      "Interest Project - експериментальна платформа, спрямована на дослідження нових методів взаємодії користувача з інтерфейсом у реальному часі. Проєкт поєднує можливості машинного навчання та адаптивного UI для персоналізованого досвіду кожного користувача.",
+      "Платформа для федерацій бойових мистецтв, що автоматизує ключові процеси організації змагань. Система дозволяє автоматично формувати пари поєдинків із поданих заявок, керувати регламентами та розкладом подій. У майбутньому проєкт стане екосистемою для ведення детальної статистики спортсменів, їхніх рейтингів та глибокої аналітики результатів боїв.",
     technologies:
-      "Проєкт побудований на базі Next.js та TypeScript для забезпечення типобезпеки і продуктивності. На бекенді використовується FastAPI (Python) у поєднанні з PostgreSQL. Для ML-компонентів застосовується TensorFlow Lite, що дозволяє запускати моделі безпосередньо у браузері.",
+      "Проєкт побудований на сучасному стеку JavaScript (ES6+). Фронтенд реалізовано на Next.js із використанням Tailwind CSS для адаптивного дизайну. Управління контентом та даними здійснюється через Strapi CMS, а стабільне розгортання забезпечує платформа Vercel.",
     participants: [
       {
-        name: "Іванюк Віталій",
-        role: "Team Lead",
-        profileLink:
-          "https://cs.kpnu.edu.ua/2024/09/19/ivaniuk-vitalij-anatolijovych/",
-      },
-      {
-        name: "Мястковськa Маринa",
-        role: "Project Manager",
-        profileLink:
-          "https://cs.kpnu.edu.ua/2019/11/04/miastkovska-maryna-oleksandrivna/",
-      },
-      {
-        name: "Косінов Михайло",
+        name: "Пилипенко Олександр", 
         role: "Developer",
-        profileLink:
-          "https://cs.kpnu.edu.ua/2024/09/19/kosinov-mykhailo-serhijovych/",
+        profileLink: PERSONAL_PAGE_BASE_URL + "/12", //TODO: САНЯ ДОДАЙ СВОЮ CV і зміни якщо щось не так зробив тут :)
       },
     ],
   },
+  // {
+  //   id: "3",
+  //   title: "Digital Learning Hub",
+  //   category: "EdTech",
+  //   categoryLabel: "Освітні технології",
+  //   status: "В роботі",
+  //   coverImage: "/dl-hub.png",
+  //   launchDate: "Травень 2025",
+  //   description:
+  //     "Інтегроване освітнє середовище, що трансформує взаємодію здобувачів освіти з університетом. Платформа автоматизує вибір дисциплін, моніторинг навчального прогресу та розподіл навантаження. Завдяки централізації даних, студенти отримують зручний доступ до своїх ІНП, оцінок та можливість швидкого контакту з викладачами через екосистему Google.",
+  //   technologies:
+  //     "Мобільна та веб-платформа розробляється на Flutter (Dart), що забезпечує кросплатформенність. Хмарна інфраструктура та база даних реалізовані на Firebase, а інтеграція з сервісами Google Workspace дозволяє автоматизувати академічну комунікацію та документообіг.",
+  //   participants: [
+  //     {
+  //       name: "Іванюк Віталій",
+  //       role: "Team Lead",
+  //       profileLink: PERSONAL_PAGE_BASE_URL + "/ivanyuk-vitalii",
+  //     },
+  //     {
+  //       name: "Мястковська Марина",
+  //       role: "Project Manager",
+  //       profileLink: PERSONAL_PAGE_BASE_URL + "/miastkovska-maryna",
+  //     },
+  //     {
+  //       name: "Косінов Михайло",
+  //       role: "Engineer / Tester",
+  //       profileLink: PERSONAL_PAGE_BASE_URL + "/kosinov-mykhailo",
+  //     },
+  //   ],
+  // },
   {
     id: "3",
-    title: "Smart Campus",
-    category: "IoT",
-    categoryLabel: "Розумна інфраструктура",
-    status: "Активний",
-    coverImage: "/project.png",
-    launchDate: "Лютий 2025",
+    title: "Adaptive Web Testing Model",
+    category: "Automation",
+    categoryLabel: "Автоматизація тестування",
+    status: "Підтримка",
+    coverImage: "/testing-model.png",
+    launchDate: "Вересень 2025",
     description:
-      "Smart Campus - система автоматизації університетської інфраструктури на базі IoT-пристроїв. Платформа забезпечує моніторинг аудиторій, управління енергоспоживанням, контроль доступу та аналітику відвідуваності в режимі реального часу для адміністрації та студентів.",
+      "Масштабована архітектурна модель для комплексного тестування адаптивних вебзастосунків. Вона забезпечує перевірку працездатності продуктів на різних типах пристроїв (web, mobile, tablet). Завдяки підходу Clean Code та багатопотоковому виконанню тестів, модель суттєво скорочує час на регресійне тестування та гарантує високу якість фінального продукту.",
     technologies:
-      "Архітектура системи побудована на мікросервісах з використанням Go та gRPC для комунікації між сервісами. Дані з IoT-сенсорів обробляються через Apache Kafka та зберігаються в InfluxDB (time-series). Фронтенд-дашборд реалізований на Vue.js з бібліотекою візуалізації D3.js.",
+      "Рішення базується на JavaScript та фреймворку Playwright. Процес безперервного тестування (Continuous Testing) автоматизовано через GitHub Actions. Для візуалізації результатів та аналізу помилок інтегрована система розширеної звітності Allure.",
     participants: [
-      {
-        name: "Іванюк Віталій",
-        role: "Team Lead",
-        profileLink:
-          "https://cs.kpnu.edu.ua/2024/09/19/ivaniuk-vitalij-anatolijovych/",
-      },
       {
         name: "Мястковськa Маринa",
         role: "Project Manager",
         profileLink:
-          "https://cs.kpnu.edu.ua/2019/11/04/miastkovska-maryna-oleksandrivna/",
+          PERSONAL_PAGE_BASE_URL+"/2",
+      },
+      {
+        name: "Іванюк Віталій",
+        role: "Consultant",
+        profileLink:
+          PERSONAL_PAGE_BASE_URL+"/1",
       },
       {
         name: "Косінов Михайло",
         role: "Developer",
-        profileLink:
-          "https://cs.kpnu.edu.ua/2024/09/19/kosinov-mykhailo-serhijovych/",
+        profileLink: PERSONAL_PAGE_BASE_URL + "/3",
       },
     ],
   },
+    {
+    id: "4",
+    title: "Youth-pulse",
+    category: "Дай",
+    categoryLabel: "Дай",
+    status: "Активний",
+    coverImage: "/testing-model.png",
+    launchDate: "Вересень 2025",
+    description:
+      "ДАЙ!",
+    technologies:
+      "ДАЙ!",
+    participants: [
+      {
+        name: "Іванюк Віталій",
+        role: "Mentor",
+        profileLink:
+          PERSONAL_PAGE_BASE_URL+"/1",
+      },
+      {
+        name: "Демченко Дмитро",
+        role: "Developer",
+        profileLink: PERSONAL_PAGE_BASE_URL + "/4",
+      },
+    ],
+  },
+  // {
+  //   id: "1111",
+  //   title: "Digital Learning Hub",
+  //   category: "EdTech",
+  //   categoryLabel: "Освітні технології",
+  //   status: "Завершено",
+  //   coverImage: "/project.png",
+  //   launchDate: "Вересень 2023",
+  //   description:
+  //     "Digital Learning Hub - це інноваційна платформа для об'єднання студентів, викладачів та менторів з ІТ-індустрії. Основна мета проєкту полягає у створенні єдиного цифрового середовища, де кожен учасник освітнього процесу може зручно відслідковувати свій прогрес, отримувати фідбек та брати участь у реальних стартапах.",
+  //   technologies:
+  //     "Проєкт розробляється з використанням сучасного стеку технологій, включаючи React для фронтенду, Node.js та Express для бекенду, а також MongoDB для зберігання даних. Для забезпечення високої продуктивності та масштабованості використовується Docker та Kubernetes. Інтеграція з GitHub/GitLab дозволяє автоматизувати процес оцінки та надання фідбеку студентам.",
+  //   participants: [
+  //     {
+  //       name: "Іванюк Віталій",
+  //       role: "Team Lead",
+  //       profileLink:
+  //         "https://cs.kpnu.edu.ua/2024/09/19/ivaniuk-vitalij-anatolijovych/",
+  //     },
+  //     {
+  //       name: "Мястковськa Маринa",
+  //       role: "Project Manager",
+  //       profileLink:
+  //         "https://cs.kpnu.edu.ua/2019/11/04/miastkovska-maryna-oleksandrivna/",
+  //     },
+  //     {
+  //       name: "Косінов Михайло",
+  //       role: "Developer",
+  //       profileLink:
+  //         "https://cs.kpnu.edu.ua/2024/09/19/kosinov-mykhailo-serhijovych/",
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: "2",
+  //   title: "Interest Project",
+  //   category: "Технології",
+  //   categoryLabel: "Технології",
+  //   status: "У розробці",
+  //   coverImage: "/project.png",
+  //   launchDate: "Травень 2024",
+  //   description:
+  //     "Interest Project - експериментальна платформа, спрямована на дослідження нових методів взаємодії користувача з інтерфейсом у реальному часі. Проєкт поєднує можливості машинного навчання та адаптивного UI для персоналізованого досвіду кожного користувача.",
+  //   technologies:
+  //     "Проєкт побудований на базі Next.js та TypeScript для забезпечення типобезпеки і продуктивності. На бекенді використовується FastAPI (Python) у поєднанні з PostgreSQL. Для ML-компонентів застосовується TensorFlow Lite, що дозволяє запускати моделі безпосередньо у браузері.",
+  //   participants: [
+  //     {
+  //       name: "Іванюк Віталій",
+  //       role: "Team Lead",
+  //       profileLink:
+  //         "https://cs.kpnu.edu.ua/2024/09/19/ivaniuk-vitalij-anatolijovych/",
+  //     },
+  //     {
+  //       name: "Мястковськa Маринa",
+  //       role: "Project Manager",
+  //       profileLink:
+  //         "https://cs.kpnu.edu.ua/2019/11/04/miastkovska-maryna-oleksandrivna/",
+  //     },
+  //     {
+  //       name: "Косінов Михайло",
+  //       role: "Developer",
+  //       profileLink:
+  //         "https://cs.kpnu.edu.ua/2024/09/19/kosinov-mykhailo-serhijovych/",
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: "3",
+  //   title: "Smart Campus",
+  //   category: "IoT",
+  //   categoryLabel: "Розумна інфраструктура",
+  //   status: "Активний",
+  //   coverImage: "/project.png",
+  //   launchDate: "Лютий 2025",
+  //   description:
+  //     "Smart Campus - система автоматизації університетської інфраструктури на базі IoT-пристроїв. Платформа забезпечує моніторинг аудиторій, управління енергоспоживанням, контроль доступу та аналітику відвідуваності в режимі реального часу для адміністрації та студентів.",
+  //   technologies:
+  //     "Архітектура системи побудована на мікросервісах з використанням Go та gRPC для комунікації між сервісами. Дані з IoT-сенсорів обробляються через Apache Kafka та зберігаються в InfluxDB (time-series). Фронтенд-дашборд реалізований на Vue.js з бібліотекою візуалізації D3.js.",
+  //   participants: [
+  //     {
+  //       name: "Іванюк Віталій",
+  //       role: "Team Lead",
+  //       profileLink:
+  //         "https://cs.kpnu.edu.ua/2024/09/19/ivaniuk-vitalij-anatolijovych/",
+  //     },
+  //     {
+  //       name: "Мястковськa Маринa",
+  //       role: "Project Manager",
+  //       profileLink:
+  //         "https://cs.kpnu.edu.ua/2019/11/04/miastkovska-maryna-oleksandrivna/",
+  //     },
+  //     {
+  //       name: "Косінов Михайло",
+  //       role: "Developer",
+  //       profileLink:
+  //         "https://cs.kpnu.edu.ua/2024/09/19/kosinov-mykhailo-serhijovych/",
+  //     },
+  //   ],
+  // },
 ];

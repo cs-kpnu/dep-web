@@ -7,12 +7,11 @@ import Pagination from "@/components/paginator";
 import clsx from "clsx";
 
 import {mockTeam as teamData} from "@/data/mockTeam";
-
-/*
-* temporary dev images imports for testing purposes
-* TODO: delete after implementation
-* */
-import UserImage from "../../assets/team-photo-mock/member1.jpg"
+// /*
+// * temporary dev images imports for testing purposes
+// * TODO: delete after implementation
+// * */
+// import UserImage from "../../assets/team-photo-mock/member1.jpg"
 
 export default function TeamPage() {
     const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +33,7 @@ export default function TeamPage() {
         patronymic,
         role: ROLE_MAP[role] ?? "Учасник",
         status,
-        imageUrl: UserImage,
+        imageUrl: member.photo,
         projects: projects.map((proj) => proj.name),
         teamDate: joinDate,
       };
@@ -45,47 +44,19 @@ export default function TeamPage() {
         // 3 Керівники (Активні)
         ...mockedTeamFromFile,
 
-        // 3 Ментори (Активні)
-        ...Array(3).fill(null).map((_, i) => ({
-            id: `mentor-${i}`,
-            lastName: 'Мястковська',
-            firstName: 'Марина',
-            patronymic: 'Олександрівна',
-            role: 'Ментор',
-            status: 'Активний',
-            degree: 'Кандидат педагогічних наук, старший викладач кафедри',
-            teamDate: '1 вересня 2024 р.',
-            projects: ['EdTech', 'LMS'],
-            imageUrl: UserImage
-        })),
-
-        // 12 Учасників (Активні)
-        ...Array(12).fill(null).map((_, i) => ({
-            id: `member-active-${i}`,
-            lastName: 'Філатов',
-            firstName: 'Антон',
-            patronymic: 'Сергійович',
-            role: 'Учасник',
-            status: 'Активний',
-            degree: 'Голова правління Громадської організації «Асоціація управління проєктами»',
-            teamDate: '1 вересня 2024 р.',
-            projects: ['Frontend Lab', 'Mobile App'],
-            imageUrl: UserImage
-        })),
-
-        // 3 Учасника (Випускники)
-        ...Array(3).fill(null).map((_, i) => ({
-            id: `member-grad-${i}`,
-            lastName: 'Сидоренко',
-            firstName: 'Олег',
-            patronymic: 'Іванович',
-            role: 'Учасник',
-            status: 'Випускник',
-            degree: 'Full Stack розробник, випускник курсу 2023 року',
-            teamDate: '1 вересня 2022 р.',
-            projects: ['Legacy Web'],
-            imageUrl: UserImage
-        }))
+        // // 3 Ментори (Активні)
+        // ...Array(3).fill(null).map((_, i) => ({
+        //     id: `mentor-${i}`,
+        //     lastName: 'Мястковська',
+        //     firstName: 'Марина',
+        //     patronymic: 'Олександрівна',
+        //     role: 'Ментор',
+        //     status: 'Активний',
+        //     degree: 'Кандидат педагогічних наук, старший викладач кафедри',
+        //     teamDate: '1 вересня 2024 р.',
+        //     projects: ['EdTech', 'LMS'],
+        //     imageUrl: UserImage
+        // })),
     ], []);
 
     // Фільтрація учасників (пошук по прізвищу або імені)
