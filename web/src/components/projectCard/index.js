@@ -21,7 +21,7 @@ const ProjectCard = ({ project }) => {
             {/* Секція зображення з бейджем статусу */}
             <div className={styles.imageContainer}>
                 <Image
-                    src={imageUrl}
+                    src={`/users-profile-images/${imageUrl}`}
                     alt={title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -44,11 +44,11 @@ const ProjectCard = ({ project }) => {
                 <div className={styles.metaInfo}>
                     <div className={styles.metaItem}>
                         <span className={styles.icon}>📅</span>
-                        <span>Початок: {startDate}</span>
+                        <span>Розпочато: {startDate}</span>
                     </div>
                     <div className={styles.metaItem}>
                         <span className={styles.icon}>👥</span>
-                        <span>{participants}</span>
+                        <span className={styles["team-members"]}>{participants}</span>
                     </div>
                 </div>
 

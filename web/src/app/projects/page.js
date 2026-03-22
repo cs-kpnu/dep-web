@@ -34,21 +34,21 @@ export default function Home() {
     const mockProjects = useMemo(() => [
         ...mockedProjectsFromFile,
         // Автоматична генерація решти 87 проєктів для тесту пагінації
-        ...Array.from({ length: 87 }, (_, i) => {
-            const statuses = ['Завершено', 'У розробці', 'Активний'];
-            const currentStatus = statuses[i % statuses.length]; // Чергуємо статуси для тесту кольорів лейблів
+        // ...Array.from({ length: 87 }, (_, i) => {
+        //     const statuses = ['Завершено', 'У розробці', 'Активний'];
+        //     const currentStatus = statuses[i % statuses.length]; // Чергуємо статуси для тесту кольорів лейблів
 
-            return {
-                id: (i + 4).toString(),
-                title: `Project ${i + 4}`,
-                status: currentStatus,
-                category: "Освіта",
-                startDate: "xx місяць xxxx р.",
-                participants: "3+ учасники",
-                description: "Інтегроване освітнє середовище, орієнтоване на автоматизацію вибору дисциплін та централізацію даних.",
-                imageUrl: Project3Image
-            };
-        })
+        //     return {
+        //         id: (i + 4).toString(),
+        //         title: `Project ${i + 4}`,
+        //         status: currentStatus,
+        //         category: "Освіта",
+        //         startDate: "xx місяць xxxx р.",
+        //         participants: "3+ учасники",
+        //         description: "Інтегроване освітнє середовище, орієнтоване на автоматизацію вибору дисциплін та централізацію даних.",
+        //         imageUrl: Project3Image
+        //     };
+        // })
     ], []);
     // pagination properties
 
