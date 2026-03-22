@@ -9,6 +9,7 @@ import YoutIMage from "@/assets/img/yout_force.png";
 import ProjectImage from "@/assets/img/case1.png";
 import styles from "./page.module.css";
 import { mockProjects } from "@/data/mockProjects";
+import { useMemo } from "react";
 
 async function getPage(params) {
   try {
@@ -39,9 +40,13 @@ export async function generateMetadata() {
 }
 
 function MockedProjects() {
+  const data = useMemo(() => {
+    return mockProjects.slice(0,3)
+  }, [])
+  
   return (
     <>
-      {mockProjects.map((project) => (
+      {data.map((project) => (
         <div key={project.id} className={styles.card}>
           <Image src={ProjectImage} alt="Icon" />
           <h4>{project.title}</h4>
@@ -220,9 +225,10 @@ export default async function Home() {
             <div className={styles["cards-grid"]}>
               {posts?.data ? (
                 posts?.data?.map((post) => {
-                  const img_prev =
+                  let img_prev =
                     post?._embedded["wp:featuredmedia"] &&
                     post?._embedded["wp:featuredmedia"][0]?.source_url;
+                  img_prev = img_prev || post.coverImage
                   return (
                     <div key={post.id} className={styles.card}>
                       {img_prev ? (

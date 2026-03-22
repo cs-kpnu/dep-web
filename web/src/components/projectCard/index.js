@@ -8,7 +8,7 @@ import clsx from "clsx";
 const ProjectCard = ({ project }) => {
 
     // Деструктуризація даних проєкту
-    const { id, title, status, category, startDate, participants, description, imageUrl } = project;
+    const { id, title, status, category, startDate, participants, description, imageUrl, coverImage } = project;
     const statusConfig = {
         'Завершено': { class: styles.success, label: 'Завершено' },
         'У розробці': { class: styles.warning, label: 'У розробці' },
@@ -21,7 +21,7 @@ const ProjectCard = ({ project }) => {
             {/* Секція зображення з бейджем статусу */}
             <div className={styles.imageContainer}>
                 <Image
-                    src={`/users-profile-images/${imageUrl}`}
+                    src={coverImage}
                     alt={title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"

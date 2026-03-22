@@ -183,6 +183,67 @@ bio: [
   ],
   joinDate: "01.10.2024",
 },
+{
+  id: "22",
+  slug: "oleksandr-pylypenko",
+  name: "Олександр ПИЛИПЕНКО",
+  birthDate: "11.02.2001",
+  role: "cтудент",
+  roleLabel: "Студент",
+  status: "Активний",
+  statusLabel: "АКТИВНИЙ",
+  degree: "Бакалавр комп'ютерних наук",
+  photo: "Pylypenko.png",
+  bio: [
+    "Fullstack-розробник із 3-річним досвідом роботи, який спеціалізується на різних стратегіях рендерингу, включаючи SSR, SSG та CSR. Маю досвід розробки бекенд-функціоналу за допомогою Next.js API routes та Headless CMS (Strapi).",
+    "Забезпечую повну адаптивність проєктів під усі роздільні здатності та браузери, фокусуючись на оптимізації швидкості сторінок. Маю досвід роботи з хмарною інфраструктурою AWS та Docker для розгортання масштабованих рішень."
+  ],
+  skills: {
+    hard: [
+      "Next.js",
+      "React JS (Redux, Saga, Toolkit)",
+      "JavaScript / TypeScript",
+      "Node.js / Express",
+      "PHP / WordPress / Opencart 3",
+      "Strapi (Headless CMS)",
+      "AWS (EC2, Loadbalancer, S3, CLI)",
+      "Docker",
+      "SQL / MySQL / MongoDB",
+      "Tailwind CSS / Styled-components / Material-ui",
+      "REST API / WebSockets",
+      "Jest / React testing library"
+    ],
+    soft: [
+      "висока організованість",
+      "написання чистого та семантичного коду",
+      "робота за методологією Scrum",
+      "критичне мислення",
+      "орієнтація на результат"
+    ]
+  },
+  languages: [
+    { name: "Українська", level: "native" },
+    { name: "Англійська", level: "B1+" }
+  ],
+    publications: [
+      {
+        name:"Kasta UA",
+        url: "https://kastapost.ua/"
+      },
+      {
+        name: "Lacuponera", url: "https://www.lacuponera.es/" 
+      },
+      {name: "National Electrical Registry", url: "https://www.nationalelectricalregistry.com/"},
+      {name: "SuperAKB", url: "https://superakb.com.ua/" }
+  ],
+  projects: [
+    { id: "1", name: "Kasta UA", url: "https://kastapost.ua/" },
+    { id: "2", name: "Lacuponera", url: "https://www.lacuponera.es/" },
+    { id: "3", name: "National Electrical Registry", url: "https://www.nationalelectricalregistry.com/" },
+    { id: "4", name: "SuperAKB", url: "https://superakb.com.ua/" }
+  ],
+  joinDate: "22.03.2026"
+},
   {
   id: "21", // Унікальний ідентифікатор для ментора
   slug: "filatov-anton",

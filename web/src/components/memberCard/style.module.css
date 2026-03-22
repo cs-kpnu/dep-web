@@ -125,6 +125,7 @@
     display: flex;
     justify-content: flex-start;
     gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .tag {
@@ -134,6 +135,8 @@
     border-radius: 2rem;
     font-size: 0.75rem;
     font-weight: 700;
+    max-height: 33px;
+    overflow-y: hidden;
 }
 
 .detailsBtn {
