@@ -162,30 +162,30 @@ export default async function Home() {
             <h2>РЕЗУЛЬТАТИ</h2>
             <div className={styles["stats-grid"]}>
               <div className={styles["stat-item"]}>
-                <div className={styles["stat-number"]} data-target="20">
-                  20 +
+                <div className={styles["stat-number"]} data-target="15">
+                  15 +
                 </div>
                 <div className={styles["stat-label"]}>активних учасників</div>
               </div>
               <div className={styles["stat-item"]}>
-                <div className={styles["stat-number"]} data-target="10">
-                  10 +
+                <div className={styles["stat-number"]} data-target="4">
+                  4 +
                 </div>
                 <div className={styles["stat-label"]}>
                   реалізованих проектів
                 </div>
               </div>
               <div className={styles["stat-item"]}>
-                <div className={styles["stat-number"]} data-target="3">
-                  3 +
+                <div className={styles["stat-number"]} data-target="2">
+                  2
                 </div>
                 <div className={styles["stat-label"]}>роки досвіду</div>
               </div>
               <div className={styles["stat-item"]}>
-                <div className={styles["stat-number"]} data-target="20">
-                  20 +
+                <div className={styles["stat-number"]} data-target="3">
+                  3
                 </div>
-                <div className={styles["stat-label"]}>партнерів</div>
+                <div className={styles["stat-label"]}>партнери</div>
               </div>
             </div>
           </div>
@@ -264,7 +264,7 @@ export default async function Home() {
                 <span>НАДИХАЙ!</span>
               </h1>
               <Link
-                href="/projects/1"
+                href="/contacts"
                 className={clsx(styles.btn, styles["btn-primary"])}
               >
                 Приєднатися<span className={styles.arrow}>→</span>
