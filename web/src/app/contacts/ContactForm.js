@@ -1,9 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState} from "react";
 import Image from "next/image";
 import TextImg from "@/assets/img/Text.svg";
 import styles from "./page.module.css";
+
+import CustomSelect from './CustomSelect';
+
+
 
 const TYPE_OPTIONS = [
     { value: "Запит на послуги", label: "Запит на послуги" },
@@ -57,19 +61,12 @@ export default function ContactForm() {
     return (
         <form className={styles["form"]} onSubmit={handleSubmit}>
             <label htmlFor="type-select">ТИП ЗВЕРНЕННЯ<Image className={styles.img} src={TextImg} alt="Text" /></label>
-            <select
-                id="type-select"
-                name="type-select"
+            <CustomSelect
                 value={type}
-                onChange={(e) => setType(e.target.value)}
-                required
-                className={styles["type-select"]}
-            >
-                <option value="" disabled>Оберіть тип звернення</option>
-                {TYPE_OPTIONS.map((opt) => (
-                    <option key={opt.value} value={opt.value}>{opt.label}</option>
-                ))}
-            </select>
+                onChange={setType}
+                options={TYPE_OPTIONS}
+                placeholder="Оберіть тип звернення"
+            />
 
             <label htmlFor="name">Ім'я<Image className={styles.img} src={TextImg} alt="Text" /></label>
             <input type="text" id="name" name="name" placeholder="Введіть ваше ім'я" required />
