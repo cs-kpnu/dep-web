@@ -225,21 +225,10 @@ bio: [
     { name: "Українська", level: "native" },
     { name: "Англійська", level: "B1+" }
   ],
-    publications: [
-      {
-        name:"Kasta UA",
-        url: "https://kastapost.ua/"
-      },
-      {
-        name: "Lacuponera", url: "https://www.lacuponera.es/" 
-      },
-      {name: "National Electrical Registry", url: "https://www.nationalelectricalregistry.com/"},
-      {name: "SuperAKB", url: "https://superakb.com.ua/" }
-  ],
+  publications: [],
   projects: [
-    { id: "1", name: "Kasta UA", url: "https://kastapost.ua/" },
-    { id: "2", name: "Lacuponera", url: "https://www.lacuponera.es/" },
-    { id: "3", name: "National Electrical Registry", url: "https://www.nationalelectricalregistry.com/" },
+     { id: "2", name: "fight-sync" },
+    { id: "X", name: "welcome-web" },
     { id: "4", name: "SuperAKB", url: "https://superakb.com.ua/" }
   ],
   joinDate: "22.03.2026"

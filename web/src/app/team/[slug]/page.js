@@ -120,7 +120,7 @@ export default async function Profile({ params }) {
           </ul>
         </div>
 
-        {member.publications.length > 0 && (
+        {/* {member.publications.length > 0 && (
           <>
             <hr className={styles.divider} />
             <div className={styles.section}>
@@ -139,10 +139,10 @@ export default async function Profile({ params }) {
               </ul>
             </div>
           </>
-        )}
+        )} */}
       </section>
-
-      <JobsAccordion />
+      {member?.publications?.length > 0 &&  <JobsAccordion jobs={member.publications} />}
+     
     </main>
   );
 }
