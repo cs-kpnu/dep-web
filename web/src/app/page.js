@@ -48,7 +48,7 @@ function MockedProjects() {
     <>
       {data.map((project) => (
         <div key={project.id} className={styles.card}>
-          <Image src={ProjectImage} alt="Icon" />
+          <Image src={project?.coverImage || ProjectImage} width="80" height="80" alt="Icon" />
           <h4>{project.title}</h4>
           <p>{project.description}</p>
           <Link
