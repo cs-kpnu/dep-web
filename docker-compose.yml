@@ -22,6 +22,9 @@ services:
     image: wordpress:latest
     volumes:
       - wp_data:/var/www/html
+      # Custom wp-content for themes and plugins
+      - ./wp-custom/theme:/var/www/html/wp-content/themes/twentytwentyfive
+      - ./wp-custom/plugin:/var/www/html/wp-content/plugins/headless-plugin
     ports:
       - 80:80
     restart: always
