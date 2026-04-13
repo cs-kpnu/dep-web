@@ -44,7 +44,7 @@ function MockedProjects() {
   const data = useMemo(() => {
     return mockProjects.slice(0,3)
   }, [])
-  
+
   return (
     <>
       {data.map((project) => (
@@ -64,6 +64,10 @@ function MockedProjects() {
   );
 }
 
+
+  
+
+
 export default async function Home() {
   const posts = await getPosts();
   const page = await getPage();
@@ -72,7 +76,15 @@ export default async function Home() {
   const title1 = page?.data?.title?.rendered.split(" ")[0];
   const title2 = page?.data?.title?.rendered.split(" ").slice(1).join(" ");
 
-  const description = page?.data?.excerpt?.rendered;
+  // const description = page?.data?.excerpt?.rendered;
+  //   const title1 = page?.data?.title?.rendered.split(" ")[0];
+  // const title2 = page?.data?.title?.rendered.split(" ")[1];
+
+  const description = page?.data?.excerpt?.rendered
+
+  const {mission_desc, } = page?.data?.acf;
+  const {members, projects, years, partners} = page?.data?.acf?.statistic
+
   return (
     <>
       <DebugProps label="page" data={page?.data} />
@@ -112,13 +124,9 @@ export default async function Home() {
         <section className={styles.mission} id="mission">
           <div className={styles.container}>
             <h2>МІСІЯ</h2>
-            <h3 className={styles["mission-intro"]}>
-              Наша місія полягає у забезпеченні рівного доступу до якісної
-              освіти та створенні технологічного впливу, що реалізується через
-              потужні інструменти для самореалізації.
-            </h3>
-            <div className={styles["mission-grid"]}>
-              <div className={styles["mission-image"]}>
+            <p className={styles['mission-intro']}>{ mission_desc ?? "Наша місія полягає у забезпеченні рівного доступу до якісної освіти та створенні технологічного впливу, що реалізується через потужні інструменти для самореалізації." }</p>
+            <div className={styles['mission-grid']}>
+              <div className={styles['mission-image']}>
                 <Image src={MainImage} alt="Mission Image" />
               </div>
               <div className={styles["mission-points"]}>
@@ -162,32 +170,22 @@ export default async function Home() {
         <section className={styles.results} id="results">
           <div className={styles.container}>
             <h2>РЕЗУЛЬТАТИ</h2>
-            <div className={styles["stats-grid"]}>
-              <div className={styles["stat-item"]}>
-                <div className={styles["stat-number"]} data-target="15">
-                  15 +
-                </div>
-                <div className={styles["stat-label"]}>активних учасників</div>
+            <div className={styles['stats-grid']}>
+              <div className={styles['stat-item']}>
+                <div className={styles['stat-number']} data-target="20">{members ?? "20"} +</div>
+                <div className={styles['stat-label']}>активних учасників</div>
               </div>
-              <div className={styles["stat-item"]}>
-                <div className={styles["stat-number"]} data-target="4">
-                  4 +
-                </div>
-                <div className={styles["stat-label"]}>
-                  реалізованих проектів
-                </div>
+              <div className={styles['stat-item']}>
+                <div className={styles['stat-number']} data-target="10">{projects ?? "10"} +</div>
+                <div className={styles['stat-label']}>реалізованих проектів</div>
               </div>
-              <div className={styles["stat-item"]}>
-                <div className={styles["stat-number"]} data-target="2">
-                  2
-                </div>
-                <div className={styles["stat-label"]}>роки досвіду</div>
+              <div className={styles['stat-item']}>
+                <div className={styles['stat-number']} data-target="3">{years ?? "3"} +</div>
+                <div className={styles['stat-label']}>роки досвіду</div>
               </div>
-              <div className={styles["stat-item"]}>
-                <div className={styles["stat-number"]} data-target="3">
-                  3
-                </div>
-                <div className={styles["stat-label"]}>партнери</div>
+              <div className={styles['stat-item']}>
+                <div className={styles['stat-number']} data-target="20">{partners ?? "20"} +</div>
+                <div className={styles['stat-label']}>партнерів</div>
               </div>
             </div>
           </div>
