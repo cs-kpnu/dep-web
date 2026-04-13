@@ -44,6 +44,9 @@ export default async function Home() {
   const title2 = page?.data?.title?.rendered.split(" ")[1];
 
   const description = page?.data?.excerpt?.rendered
+
+  const {mission_desc, } = page?.data?.acf;
+  const {members, projects, years, partners} = page?.data?.acf?.statistic
   return (
 
     <>
@@ -66,7 +69,7 @@ export default async function Home() {
         <section className={styles.mission} id="mission">
           <div className={styles.container}>
             <h2>МІСІЯ</h2>
-            <p className={styles['mission-intro']}>Наша місія полягає у забезпеченні рівного доступу до якісної освіти та створенні технологічного впливу, що реалізується через потужні інструменти для самореалізації.</p>
+            <p className={styles['mission-intro']}>{ mission_desc ?? "Наша місія полягає у забезпеченні рівного доступу до якісної освіти та створенні технологічного впливу, що реалізується через потужні інструменти для самореалізації." }</p>
             <div className={styles['mission-grid']}>
               <div className={styles['mission-image']}>
                 <Image src={MainImage} alt="Mission Image" />
@@ -105,19 +108,19 @@ export default async function Home() {
             <h2>РЕЗУЛЬТАТИ</h2>
             <div className={styles['stats-grid']}>
               <div className={styles['stat-item']}>
-                <div className={styles['stat-number']} data-target="20">20 +</div>
+                <div className={styles['stat-number']} data-target="20">{members ?? "20"} +</div>
                 <div className={styles['stat-label']}>активних учасників</div>
               </div>
               <div className={styles['stat-item']}>
-                <div className={styles['stat-number']} data-target="10">10 +</div>
+                <div className={styles['stat-number']} data-target="10">{projects ?? "10"} +</div>
                 <div className={styles['stat-label']}>реалізованих проектів</div>
               </div>
               <div className={styles['stat-item']}>
-                <div className={styles['stat-number']} data-target="3">3 +</div>
+                <div className={styles['stat-number']} data-target="3">{years ?? "3"} +</div>
                 <div className={styles['stat-label']}>роки досвіду</div>
               </div>
               <div className={styles['stat-item']}>
-                <div className={styles['stat-number']} data-target="20">20 +</div>
+                <div className={styles['stat-number']} data-target="20">{partners ?? "20"} +</div>
                 <div className={styles['stat-label']}>партнерів</div>
               </div>
             </div>
