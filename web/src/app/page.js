@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import clsx from "clsx";
 import { api } from "@/lib/api";
+import DebugProps from "@/components/debugProps";
 
 import BubbleImage from "@/assets/img/main-section-bubble.png";
 import MainImage from "@/assets/img/mission-section-image.png";
@@ -74,6 +75,7 @@ export default async function Home() {
   const description = page?.data?.excerpt?.rendered;
   return (
     <>
+      <DebugProps label="page" data={page?.data} />
       <main className={styles.main}>
         <section className={styles.hero}>
           <div className={clsx(styles.container, styles["hero-container"])}>
