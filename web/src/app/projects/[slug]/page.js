@@ -4,13 +4,28 @@ import { notFound } from "next/navigation";
 import styles from "./style.module.css";
 import { Calendar, Users, Tag, AlignLeft, ExternalLink } from "lucide-react";
 
+import {api} from "@/lib/api";
 import Breadcrumb from "@/components/breadcrumb";
 import { mockProjects } from "@/data/mockProjects";
+
+async function getPost(slug) {
+  try {
+    const data = await api.get(`/posts/${slug}?_embed`).then((res) => res?.data?.acf);
+    return data;
+  } catch (error) {
+    console.error("Error fetching page:", error);
+    // throw error;
+  }
+}
 
 export default async function PortfolioProject({ params }) {
   const {slug} = await params;
   console.log("Project Slug:", slug);
-  const project = mockProjects.find((p) => p.id === slug);
+
+  let projectData = await getPost(slug);
+  console.log("Fetched Project Data:", projectData);
+  let project = {...projectData, participants: []} || mockProjects.find((p) => p.id === slug);
+
 
   if (!project) {
     notFound();
