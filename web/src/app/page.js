@@ -21,14 +21,13 @@ async function getPage(params) {
     // throw error;
   }
 }
-async function getPosts(params) {
+async function getPosts() {
   try {
     const data = await api.get("/posts?_embed&per_page=3");
     return data;
   } catch (error) {
     console.error("Error fetching posts:", error);
-    // throw error;
-  }
+    }
 }
 
 export async function generateMetadata() {
@@ -82,8 +81,8 @@ export default async function Home() {
 
   const description = page?.data?.excerpt?.rendered
 
-  const {mission_desc, } = page?.data?.acf;
-  const {members, projects, years, partners} = page?.data?.acf?.statistic
+  const {mission_desc, } = page?.data?.acf || {};
+  const {members, projects, years, partners} = page?.data?.acf?.statistic || {};
 
   return (
     <>
