@@ -177,8 +177,8 @@ export const mockProjects = [
   participants: [
     {
       name: "Учасники гуртка",
-      role: "Team Members"
-      // profileLink: "PERSONAL_PAGE_BASE_URL"
+      role: "Team Members",
+      profileLink: PERSONAL_PAGE_BASE_URL + "/5"
     }
   ]
 },
