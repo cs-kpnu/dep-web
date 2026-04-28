@@ -63,6 +63,8 @@ function MockedProjects() {
   );
 }
 
+const mockedDescription =  "Ми реалізуємо вагомі IT-рішення, посилюючи громадянську позицію молоді, та формуємо партнерство з провідними технічними спеціалістами й організаціями галузі."
+
 
   
 
@@ -70,16 +72,12 @@ function MockedProjects() {
 export default async function Home() {
   const posts = await getPosts();
   const page = await getPage();
-  console.log(posts, "posts");
-  console.log("sasha", page);
-  const title1 = page?.data?.title?.rendered.split(" ")[0];
-  const title2 = page?.data?.title?.rendered.split(" ").slice(1).join(" ");
+  const renderedTitle = page?.data?.title?.rendered;
+  const titleWords = renderedTitle?.split(" ") ?? [];
+  const title1 = titleWords[0] ?? "Навчайся.";
+  const title2 = titleWords.slice(1).join(" ") || "Створюй. Надихай!";
 
-  // const description = page?.data?.excerpt?.rendered;
-  //   const title1 = page?.data?.title?.rendered.split(" ")[0];
-  // const title2 = page?.data?.title?.rendered.split(" ")[1];
-
-  const description = page?.data?.excerpt?.rendered
+  const description = page?.data?.excerpt?.rendered  || mockedDescription;
 
   const {mission_desc, } = page?.data?.acf || {};
   const {members, projects, years, partners} = page?.data?.acf?.statistic || {};
@@ -104,15 +102,7 @@ export default async function Home() {
                   </span>
                 </h1>
               )}
-              {description ? (
                 <p dangerouslySetInnerHTML={{ __html: description }}></p>
-              ) : (
-                <p>
-                  Ми реалізуємо вагомі IT-рішення, посилюючи громадянську
-                  позицію молоді, та формуємо партнерство з провідними
-                  технічними спеціалістами й організаціями галузі.
-                </p>
-              )}
             </div>
             <div className={styles["hero-graphic"]}>
               <Image src={BubbleImage} alt="Hero Graphic" />

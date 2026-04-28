@@ -24,7 +24,9 @@ export default async function PortfolioProject({ params }) {
 
   let projectData = await getPost(slug);
   console.log("Fetched Project Data:", projectData);
-  let project = {...projectData, participants: []} || mockProjects.find((p) => p.id === slug);
+ const project = projectData
+  ? { ...projectData, participants: [] }
+  : mockProjects.find((p) => p.id === slug);
 
 
   if (!project) {
