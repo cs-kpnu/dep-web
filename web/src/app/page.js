@@ -41,7 +41,7 @@ export async function generateMetadata() {
 
 function MockedProjects() {
   const data = useMemo(() => {
-    return mockProjects.slice(0,3)
+    return mockProjects.slice(-3)
   }, [])
 
   return (
@@ -203,7 +203,7 @@ export default async function Home() {
                   та надаючи роботодавцям доступ до перевірених талантів.
                 </p>
                 <Link
-                  href="/projects/1"
+                  href="/projects/6"
                   className={clsx(styles.btn, styles["btn-primary"])}
                 >
                   Детальніше<span className={styles.arrow}>→</span>
