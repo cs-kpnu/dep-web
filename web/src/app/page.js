@@ -7,6 +7,7 @@ import DebugProps from "@/components/debugProps";
 import BubbleImage from "@/assets/img/main-section-bubble.png";
 import MainImage from "@/assets/img/mission-section-image.png";
 import YoutIMage from "@/assets/img/yout_force.png";
+import DigDepImage from "@/assets/img/digital-department.png"
 import ProjectImage from "@/assets/img/case1.png";
 import styles from "./page.module.css";
 import { mockProjects } from "@/data/mockProjects";
@@ -165,16 +166,16 @@ export default async function Home() {
                 <div className={styles['stat-label']}>активних учасників</div>
               </div>
               <div className={styles['stat-item']}>
-                <div className={styles['stat-number']} data-target="10">{projects ?? "10"} +</div>
+                <div className={styles['stat-number']} data-target="12">{projects ?? "12"} +</div>
                 <div className={styles['stat-label']}>реалізованих проектів</div>
               </div>
               <div className={styles['stat-item']}>
-                <div className={styles['stat-number']} data-target="3">{years ?? "3"} +</div>
+                <div className={styles['stat-number']} data-target="3">{years ?? "2"} </div>
                 <div className={styles['stat-label']}>роки досвіду</div>
               </div>
               <div className={styles['stat-item']}>
-                <div className={styles['stat-number']} data-target="20">{partners ?? "20"} +</div>
-                <div className={styles['stat-label']}>партнерів</div>
+                <div className={styles['stat-number']} data-target="20">{partners ?? "3"} </div>
+                <div className={styles['stat-label']}>партнери</div>
               </div>
             </div>
           </div>
@@ -185,25 +186,23 @@ export default async function Home() {
             <h2>УСПІШНІ КЕЙСИ</h2>
             <div className={styles["featured-case"]}>
               <div className={styles["case-logo"]}>
-                <Image src={YoutIMage} alt="YothForce logo" />
+                <Image src={DigDepImage} alt="digital-department logo" />
                 <h3>
-                  YouthForce: <span> Цифрове портфоліо студента</span>
+                  Цифрова кафедра: <span> інноваційний освітній простір</span>
                 </h3>
               </div>
               <div className={styles["case-info"]}>
                 <h3>
-                  YouthForce - це інноваційна платформа та цифрове портфоліо
-                  студента.
+                  Головний проєкт студентського гуртка кафедри комп'ютерних наук К-ПНУ імені Івана Огієнка.
                 </h3>
                 <p>
-                  Ми надаємо студентам можливість взяти участь у реальних
-                  проєктах на підтверджений практичний досвід і цінні навички.
-                  Створюємо надійний місток між освітою та ринком праці,
-                  ефективно розриваючи "замкнене коло першої роботи" для молоді
-                  та надаючи роботодавцям доступ до перевірених талантів.
+                  Основна мета — розвиток практичних навичок студентів та формування мосту між
+                  академічною освітою і реальними вимогами ІТ-ринку. В межах екосистеми 
+                  створюються та впроваджуються цифрові освітні рішення,університетські системи
+                  та перспективні стартапи.
                 </p>
                 <Link
-                  href="/projects/6"
+                  href="/projects/5"
                   className={clsx(styles.btn, styles["btn-primary"])}
                 >
                   Детальніше<span className={styles.arrow}>→</span>
