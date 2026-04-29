@@ -41,7 +41,7 @@ export async function generateMetadata() {
 
 function MockedProjects() {
   const data = useMemo(() => {
-    return mockProjects.slice(0,3)
+    return mockProjects.slice(-3)
   }, [])
 
   return (

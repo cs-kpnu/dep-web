@@ -299,7 +299,7 @@ bio: [
     { id: "X", name: "welcome-web" },
     { id: "4", name: "SuperAKB", url: "https://superakb.com.ua/" }
   ],
-  joinDate: "22.03.2026"
+  joinDate: "22.03.2025"
 },
 
   //Students staff
