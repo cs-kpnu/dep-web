@@ -1,10 +1,11 @@
 'use client'
 
 import styles from "./page.module.css";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import EventCard from "@/components/eventCard"; // Твій новий компонент
 import Pagination from "@/components/paginator";
 import clsx from "clsx";
+import {api} from "@/lib/api";
 
 
 /*
@@ -14,7 +15,19 @@ import clsx from "clsx";
 import CementImage from "../../assets/activity-images/cement.jpg";
 import EgapIdeatonImage from "../../assets/activity-images/Egap_ideaton.png";
 import WorkProcessImage from "../../assets/activity-images/Work_process.jpg";
+
+async function getPosts() {
+  try {
+    const data = await api.get("/events?_embed&per_page=3");
+    return data;
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    }
+}
+
+
 export default function EventsPage() {
+    const [mockEvents, setMockEvents] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [selected, setSelected] = useState('Фільтри');
     const [searchTerm, setSearchTerm] = useState('');
@@ -23,58 +36,82 @@ export default function EventsPage() {
     const options = ['За останній місяць', 'За останній рік', 'За весь час'];
 
     // Mock-дані для подій
-    const mockEvents = useMemo(() => [
-                        {
-            id: "3",
-            title: "Цифрова кафедра: робота за будь-яких умов",
-            category: "РОБОЧИЙ ПРОЦЕС",
-            date: "12.12.2025",
-            rawDate: new Date(2026, 3, 3), // Для фільтрації (місяці в JS починаються з 0)
-            description: "Навіть попри постійні вимкнення електроенергії проблемна група “Цифрова кафедра” продовжує свою роботу у звичному режимі...",
-            author: "Юліана Некрасова",
-            publishedAt: "12.12.2025, 14:30",
-            imageUrl: WorkProcessImage,
-            links: [{ text: "Посилання на публікацію", url: "https://cs.kpnu.edu.ua/2025/12/12/tsyfrova-kafedra-robota-za-bud-iakykh-umov/" }]
-        },
-        {
-            id: "1",
-            title: "ЕКСКУРСІЯ НА АТ «ПОДІЛЬСЬКИЙ ЦЕМЕНТ»",
-            category: "ЕКСКУРСІЯ",
-            date: "30.10.2025",
-            rawDate: new Date(2026, 3, 3), // Для фільтрації (місяці в JS починаються з 0)
-            description: "Здобувачі вищої освіти кафедри комп'ютерних наук разом із викладачами фізико-математичного факультету здійснили важливу виробничу екскурсію...",
-            author: "Юліана Некрасова",
-            publishedAt: "30.10.2025, 14:30",
-            imageUrl: CementImage,
-            links: [{ text: "Посилання на публікацію", url: "https://cs.kpnu.edu.ua/2025/10/30/ekskursiia-na-at-podilskyj-tsement/" }]
-        },
-        {
-            id: "2",
-            title: "EGAP IDEATHON 2025",
-            category: "OCBITA",
-            date: "20.10.2025",
-            rawDate: new Date(2025, 9, 15),
-            description: "Учасники наукового гуртка 'Цифрова кафедра' взяли активну участь у EGAP Ideathon 2025 - національному ідеатоні з розробки нових сервісів...",
-            author: "Юліана Некрасова",
-            publishedAt: "20.10.2025, 14:30",
-            imageUrl: EgapIdeatonImage,
-            links: [{ text: "Посилання на публікацію", url: "https://cs.kpnu.edu.ua/2025/10/20/kafedra-komp-iuternykh-nauk-na-egap-ideathon-2025/" }]
-        },
+    // const mockEvents = useMemo(() => [
+    //                     {
+    //         id: "3",
+    //         title: "Цифрова кафедра: робота за будь-яких умов",
+    //         category: "РОБОЧИЙ ПРОЦЕС",
+    //         date: "12.12.2025",
+    //         rawDate: new Date(2026, 3, 3), // Для фільтрації (місяці в JS починаються з 0)
+    //         description: "Навіть попри постійні вимкнення електроенергії проблемна група “Цифрова кафедра” продовжує свою роботу у звичному режимі...",
+    //         author: "Юліана Некрасова",
+    //         publishedAt: "12.12.2025, 14:30",
+    //         imageUrl: WorkProcessImage,
+    //         links: [{ text: "Посилання на публікацію", url: "https://cs.kpnu.edu.ua/2025/12/12/tsyfrova-kafedra-robota-za-bud-iakykh-umov/" }]
+    //     },
+    //     {
+    //         id: "1",
+    //         title: "ЕКСКУРСІЯ НА АТ «ПОДІЛЬСЬКИЙ ЦЕМЕНТ»",
+    //         category: "ЕКСКУРСІЯ",
+    //         date: "30.10.2025",
+    //         rawDate: new Date(2026, 3, 3), // Для фільтрації (місяці в JS починаються з 0)
+    //         description: "Здобувачі вищої освіти кафедри комп'ютерних наук разом із викладачами фізико-математичного факультету здійснили важливу виробничу екскурсію...",
+    //         author: "Юліана Некрасова",
+    //         publishedAt: "30.10.2025, 14:30",
+    //         imageUrl: CementImage,
+    //         links: [{ text: "Посилання на публікацію", url: "https://cs.kpnu.edu.ua/2025/10/30/ekskursiia-na-at-podilskyj-tsement/" }]
+    //     },
+    //     {
+    //         id: "2",
+    //         title: "EGAP IDEATHON 2025",
+    //         category: "OCBITA",
+    //         date: "20.10.2025",
+    //         rawDate: new Date(2025, 9, 15),
+    //         description: "Учасники наукового гуртка 'Цифрова кафедра' взяли активну участь у EGAP Ideathon 2025 - національному ідеатоні з розробки нових сервісів...",
+    //         author: "Юліана Некрасова",
+    //         publishedAt: "20.10.2025, 14:30",
+    //         imageUrl: EgapIdeatonImage,
+    //         links: [{ text: "Посилання на публікацію", url: "https://cs.kpnu.edu.ua/2025/10/20/kafedra-komp-iuternykh-nauk-na-egap-ideathon-2025/" }]
+    //     },
 
-        // // Генерація для тесту пагінації (всі минулорічні)
-        // ...Array.from({ length: 30 }, (_, i) => ({
-        //     id: (i + 3).toString(),
-        //     title: `Подія ${i + 3}`,
-        //     category: "OCBITA",
-        //     date: "12.10.2024",
-        //     rawDate: new Date(2024, 9, 12),
-        //     description: "Опис чергової важливої події, що відбулася в рамках діяльності кафедри або університету...",
-        //     author: "Юліана Некрасова",
-        //     publishedAt: "14.10.2024, 14:30",
-        //     imageUrl: Project3Image,
-        //     links: [{ text: "Посилання 1", url: "https://cs.kpnu.edu.ua/2025/10/30/ekskursiia-na-at-podilskyj-tsement/" }]
-        // }))
-    ], []);
+    //     // // Генерація для тесту пагінації (всі минулорічні)
+    //     // ...Array.from({ length: 30 }, (_, i) => ({
+    //     //     id: (i + 3).toString(),
+    //     //     title: `Подія ${i + 3}`,
+    //     //     category: "OCBITA",
+    //     //     date: "12.10.2024",
+    //     //     rawDate: new Date(2024, 9, 12),
+    //     //     description: "Опис чергової важливої події, що відбулася в рамках діяльності кафедри або університету...",
+    //     //     author: "Юліана Некрасова",
+    //     //     publishedAt: "14.10.2024, 14:30",
+    //     //     imageUrl: Project3Image,
+    //     //     links: [{ text: "Посилання 1", url: "https://cs.kpnu.edu.ua/2025/10/30/ekskursiia-na-at-podilskyj-tsement/" }]
+    //     // }))
+    // ], []);
+
+    useEffect(() => {
+        const fetchEvents = async () => {
+            const events = await getPosts();
+               console.log("Pre Mapped events:", events?.data);
+                   let data = events?.data?.map(event => ({
+            id: event.id,
+            title: event.title?.rendered || '',
+            description: (event.excerpt?.rendered || '').replace(/<[^>]+>/g, '').trim(),
+            category: event.acf?.category || '',
+            date: event.acf?.event_date || '',
+            rawDate: event.acf?.event_date,
+            author: event.acf?.author_name || '',
+            publishedAt: event.acf?.published_at || '',
+            imageUrl: event._embedded?.['wp:featuredmedia']?.[0]?.source_url || WorkProcessImage,
+            links: event.acf?.links ? event.acf?.links.split(',') : [],
+        }));
+        console.log("Mapped events:", data);
+            setMockEvents(data);
+        };
+        fetchEvents();
+    }, []);
+
+    console.log("Fetched events:", mockEvents);
 
     // Фільтрація за часом та пошуком
     const filteredEvents = useMemo(() => {

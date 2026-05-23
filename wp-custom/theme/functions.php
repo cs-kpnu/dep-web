@@ -1,7 +1,36 @@
 <?php
 
+// Tell ACF where to save and load Local JSON field groups
+add_filter('acf/settings/save_json', function() {
+    return get_stylesheet_directory() . '/acf-json';
+});
+add_filter('acf/settings/load_json', function($paths) {
+    $paths[] = get_stylesheet_directory() . '/acf-json';
+    return $paths;
+});
+
 function register_headless_cpts() {
-    // 1. Register 'Member' (Team)
+    // 1. Register 'Project'
+    register_post_type('project', [
+        'labels' => [
+            'name'          => 'Projects',
+            'singular_name' => 'Project',
+            'add_new_item'  => 'Add New Project',
+            'edit_item'     => 'Edit Project',
+            'view_item'     => 'View Project',
+            'search_items'  => 'Search Projects',
+        ],
+        'public'       => true,
+        'has_archive'  => true,
+        'supports'     => ['title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'],
+        'show_in_rest' => true,
+         'rest_base'          => 'projects',
+        'menu_icon'    => 'dashicons-portfolio',
+        'menu_position'=> 5,
+        'rewrite'      => ['slug' => 'projects'],
+    ]);
+
+    // 2. Register 'Member' (Team)
     register_post_type('member', [
         'labels' => [
             'name'          => 'Team Members',
@@ -15,6 +44,7 @@ function register_headless_cpts() {
         'has_archive'         => true,
         'supports'            => ['title', 'editor', 'thumbnail', 'custom-fields'],
         'show_in_rest'        => true,
+           'rest_base'          => 'members',
         'show_in_graphql'     => true,
         'graphql_single_name' => 'member',
         'graphql_plural_name' => 'members',
@@ -37,6 +67,7 @@ function register_headless_cpts() {
         'has_archive'         => true,
         'supports'            => ['title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'],
         'show_in_rest'        => true,
+           'rest_base'          => 'events',
         'show_in_graphql'     => true,
         'graphql_single_name' => 'event',
         'graphql_plural_name' => 'events',

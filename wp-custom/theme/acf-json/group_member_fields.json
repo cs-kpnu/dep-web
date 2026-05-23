@@ -1,0 +1,245 @@
+{
+    "key": "group_member_fields",
+    "title": "Member Details",
+    "fields": [
+        {
+            "key": "field_member_birth_date",
+            "label": "Birth Date",
+            "name": "birth_date",
+            "type": "text",
+            "instructions": "Format: DD.MM.YYYY",
+            "required": 0,
+            "wrapper": { "width": "33", "class": "", "id": "" }
+        },
+        {
+            "key": "field_member_role",
+            "label": "Role",
+            "name": "role",
+            "type": "select",
+            "required": 1,
+            "choices": {
+                "керівник": "Керівник",
+                "ментор": "Ментор",
+                "студент": "Студент",
+                "студентка": "Студентка"
+            },
+            "default_value": "студент",
+            "return_format": "value",
+            "wrapper": { "width": "33", "class": "", "id": "" }
+        },
+        {
+            "key": "field_member_role_label",
+            "label": "Role Label (displayed)",
+            "name": "role_label",
+            "type": "text",
+            "instructions": "e.g. Керівник / Ментор",
+            "required": 0,
+            "wrapper": { "width": "34", "class": "", "id": "" }
+        },
+        {
+            "key": "field_member_status",
+            "label": "Status",
+            "name": "status",
+            "type": "select",
+            "required": 1,
+            "choices": {
+                "Активний": "Активний",
+                "Неактивний": "Неактивний"
+            },
+            "default_value": "Активний",
+            "return_format": "value",
+            "wrapper": { "width": "50", "class": "", "id": "" }
+        },
+        {
+            "key": "field_member_status_label",
+            "label": "Status Label (uppercase display)",
+            "name": "status_label",
+            "type": "text",
+            "instructions": "e.g. АКТИВНИЙ",
+            "required": 0,
+            "wrapper": { "width": "50", "class": "", "id": "" }
+        },
+        {
+            "key": "field_member_degree",
+            "label": "Academic Degree",
+            "name": "degree",
+            "type": "text",
+            "instructions": "e.g. Доктор технічних наук, доцент",
+            "required": 0,
+            "wrapper": { "width": "", "class": "", "id": "" }
+        },
+        {
+            "key": "field_member_join_date",
+            "label": "Join Date",
+            "name": "join_date",
+            "type": "text",
+            "instructions": "Format: DD.MM.YYYY",
+            "required": 0,
+            "wrapper": { "width": "50", "class": "", "id": "" }
+        },
+        {
+            "key": "field_member_bio",
+            "label": "Bio Paragraphs",
+            "name": "bio",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Add Paragraph",
+            "min": 1,
+            "max": 5,
+            "sub_fields": [
+                {
+                    "key": "field_member_bio_paragraph",
+                    "label": "Paragraph",
+                    "name": "paragraph",
+                    "type": "textarea",
+                    "instructions": "HTML allowed: <strong>, <em>",
+                    "rows": 3,
+                    "required": 1,
+                    "wrapper": { "width": "", "class": "", "id": "" }
+                }
+            ]
+        },
+        {
+            "key": "field_member_skills_hard",
+            "label": "Hard Skills",
+            "name": "skills_hard",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Add Skill",
+            "min": 0,
+            "max": 0,
+            "sub_fields": [
+                {
+                    "key": "field_member_hard_skill",
+                    "label": "Skill",
+                    "name": "skill",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": { "width": "", "class": "", "id": "" }
+                }
+            ]
+        },
+        {
+            "key": "field_member_skills_soft",
+            "label": "Soft Skills",
+            "name": "skills_soft",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Add Skill",
+            "min": 0,
+            "max": 0,
+            "sub_fields": [
+                {
+                    "key": "field_member_soft_skill",
+                    "label": "Skill",
+                    "name": "skill",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": { "width": "", "class": "", "id": "" }
+                }
+            ]
+        },
+        {
+            "key": "field_member_languages",
+            "label": "Languages",
+            "name": "languages",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Add Language",
+            "min": 0,
+            "max": 0,
+            "sub_fields": [
+                {
+                    "key": "field_member_language_name",
+                    "label": "Language",
+                    "name": "name",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": { "width": "50", "class": "", "id": "" }
+                },
+                {
+                    "key": "field_member_language_level",
+                    "label": "Level",
+                    "name": "level",
+                    "type": "text",
+                    "instructions": "e.g. native, intermediate, B1+",
+                    "required": 0,
+                    "wrapper": { "width": "50", "class": "", "id": "" }
+                }
+            ]
+        },
+        {
+            "key": "field_member_publications",
+            "label": "Publications",
+            "name": "publications",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Add Publication",
+            "min": 0,
+            "max": 0,
+            "sub_fields": [
+                {
+                    "key": "field_member_pub_name",
+                    "label": "Title",
+                    "name": "name",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": { "width": "60", "class": "", "id": "" }
+                },
+                {
+                    "key": "field_member_pub_url",
+                    "label": "URL / DOI",
+                    "name": "url",
+                    "type": "url",
+                    "required": 0,
+                    "wrapper": { "width": "40", "class": "", "id": "" }
+                }
+            ]
+        },
+        {
+            "key": "field_member_projects",
+            "label": "Projects",
+            "name": "member_projects",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Add Project",
+            "min": 0,
+            "max": 0,
+            "sub_fields": [
+                {
+                    "key": "field_member_project_id",
+                    "label": "Project ID",
+                    "name": "project_id",
+                    "type": "text",
+                    "required": 0,
+                    "wrapper": { "width": "30", "class": "", "id": "" }
+                },
+                {
+                    "key": "field_member_project_name",
+                    "label": "Project Name",
+                    "name": "project_name",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": { "width": "70", "class": "", "id": "" }
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "member"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Custom fields for the Member (Team) post type, mirroring the mockTeam data structure."
+}

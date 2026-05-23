@@ -1,0 +1,122 @@
+{
+    "key": "group_project_fields",
+    "title": "Project Details",
+    "fields": [
+        {
+            "key": "field_project_category",
+            "label": "Category (internal key)",
+            "name": "category",
+            "type": "text",
+            "instructions": "Internal category key, e.g. Management, EdTech, SportsTech",
+            "required": 0,
+            "wrapper": { "width": "50", "class": "", "id": "" }
+        },
+        {
+            "key": "field_project_category_label",
+            "label": "Category Label (Ukrainian)",
+            "name": "category_label",
+            "type": "text",
+            "instructions": "Displayed label, e.g. Освітні технології, Спорт",
+            "required": 0,
+            "wrapper": { "width": "50", "class": "", "id": "" }
+        },
+        {
+            "key": "field_project_status",
+            "label": "Status",
+            "name": "status",
+            "type": "select",
+            "required": 1,
+            "choices": {
+                "Активний": "Активний",
+                "У розробці": "У розробці",
+                "Завершено": "Завершено",
+                "Підтримка": "Підтримка"
+            },
+            "default_value": "Активний",
+            "return_format": "value",
+            "wrapper": { "width": "50", "class": "", "id": "" }
+        },
+        {
+            "key": "field_project_cover_image",
+            "label": "Cover Image",
+            "name": "cover_image",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "wrapper": { "width": "50", "class": "", "id": "" }
+        },
+        {
+            "key": "field_project_launch_date",
+            "label": "Launch Date",
+            "name": "launch_date",
+            "type": "text",
+            "instructions": "e.g. Вересень 2025",
+            "required": 0,
+            "wrapper": { "width": "50", "class": "", "id": "" }
+        },
+        {
+            "key": "field_project_technologies",
+            "label": "Technologies",
+            "name": "technologies",
+            "type": "textarea",
+            "rows": 4,
+            "required": 0,
+            "wrapper": { "width": "", "class": "", "id": "" }
+        },
+        {
+            "key": "field_project_participants",
+            "label": "Participants",
+            "name": "participants",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Add Participant",
+            "min": 0,
+            "max": 0,
+            "sub_fields": [
+                {
+                    "key": "field_participant_name",
+                    "label": "Full Name",
+                    "name": "name",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": { "width": "35", "class": "", "id": "" }
+                },
+                {
+                    "key": "field_participant_role",
+                    "label": "Role",
+                    "name": "role",
+                    "type": "text",
+                    "instructions": "e.g. Team Lead, Developer, Designer",
+                    "required": 0,
+                    "wrapper": { "width": "30", "class": "", "id": "" }
+                },
+                {
+                    "key": "field_participant_profile_link",
+                    "label": "Profile Link",
+                    "name": "profile_link",
+                    "type": "url",
+                    "required": 0,
+                    "wrapper": { "width": "35", "class": "", "id": "" }
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "project"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Custom fields for the Project post type, mirroring the mockProjects data structure."
+}
