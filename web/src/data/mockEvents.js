@@ -2,9 +2,9 @@
  * temporary dev images imports for testing purposes
  * TODO: delete after implementation
  * */
-import CementImage from "../../assets/activity-images/cement.jpg";
-import EgapIdeatonImage from "../../assets/activity-images/Egap_ideaton.png";
-import WorkProcessImage from "../../assets/activity-images/Work_process.jpg";
+import CementImage from "@/assets/activity-images/cement.jpg";
+import EgapIdeatonImage from "@/assets/activity-images/Egap_ideaton.png";
+import WorkProcessImage from "@/assets/activity-images/Work_process.jpg";
 
 export const mockData = [
   {

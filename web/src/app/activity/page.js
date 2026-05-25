@@ -7,7 +7,7 @@ import Pagination from "@/components/paginator";
 import clsx from "clsx";
 import { api } from "@/lib/api";
 import { transformActivity } from "@/utils/transformFromWp";
-import { mockData } from "@/app/activity/mock";
+import { mockData } from "@/data/mockEvents";
 
 import WorkProcessImage from "@/assets/activity-images/Work_process.jpg";
 
