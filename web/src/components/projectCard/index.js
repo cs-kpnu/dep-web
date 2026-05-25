@@ -16,6 +16,8 @@ const ProjectCard = ({ project }) => {
     };
     const { class: statusClass, label } = statusConfig[status] || { class: styles.default, label: status };
 
+    const formattedParticipants = participants.map(p => p.name).join(", ");
+
     return (
         <article className={styles.card}>
             {/* Секція зображення з бейджем статусу */}
@@ -48,7 +50,7 @@ const ProjectCard = ({ project }) => {
                     </div>
                     <div className={styles.metaItem}>
                         <span className={styles.icon}>👥</span>
-                        <span className={styles["team-members"]}>{participants}</span>
+                        <span className={styles["team-members"]}>{formattedParticipants}</span>
                     </div>
                 </div>
 

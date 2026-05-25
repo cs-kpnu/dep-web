@@ -32,15 +32,6 @@ export default function ProjectsPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const options = ["Всі", "Активний", "У розробці", "Завершено"];
 
-  const mockedProjectsFromFile = useMemo(() => {
-    return projectsData.map((project) => ({
-      ...project,
-      startDate: project.launchDate,
-      participants: project.participants.map((p) => p.name).join(", "),
-      imageUrl: Project1Image,
-    }));
-  }, []);
-
   useEffect(() => {
     const fetchEvents = async () => {
       try {
@@ -49,11 +40,11 @@ export default function ProjectsPage() {
         setMockProjects(projects);
       } catch (e) {
         console.error("Error fetching projects:", e);
-        setMockProjects(mockedProjectsFromFile);
+        setMockProjects(projectsData);
       }
     };
     fetchEvents();
-  }, [mockedProjectsFromFile]);
+  }, []);
 
   // project filtration by type and filter data by project name
   const filteredProjects = useMemo(() => {

@@ -68,38 +68,11 @@
             "key": "field_project_participants",
             "label": "Participants",
             "name": "participants",
-            "type": "repeater",
-            "layout": "table",
-            "button_label": "Add Participant",
-            "min": 0,
-            "max": 0,
-            "sub_fields": [
-                {
-                    "key": "field_participant_name",
-                    "label": "Full Name",
-                    "name": "name",
-                    "type": "text",
-                    "required": 1,
-                    "wrapper": { "width": "35", "class": "", "id": "" }
-                },
-                {
-                    "key": "field_participant_role",
-                    "label": "Role",
-                    "name": "role",
-                    "type": "text",
-                    "instructions": "e.g. Team Lead, Developer, Designer",
-                    "required": 0,
-                    "wrapper": { "width": "30", "class": "", "id": "" }
-                },
-                {
-                    "key": "field_participant_profile_link",
-                    "label": "Profile Link",
-                    "name": "profile_link",
-                    "type": "url",
-                    "required": 0,
-                    "wrapper": { "width": "35", "class": "", "id": "" }
-                }
-            ]
+            "type": "text",
+            "instructions": "e.g  Ім'я,Роль,id; Ім'я,Роль,id; ",
+            "required": 0,
+            "wrapper": { "width": "", "class": "", "id": "" }
+            
         }
     ],
     "location": [
