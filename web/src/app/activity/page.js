@@ -1,216 +1,157 @@
-'use client'
+"use client";
 
 import styles from "./page.module.css";
 import { useState, useMemo, useEffect } from "react";
 import EventCard from "@/components/eventCard"; // Твій новий компонент
 import Pagination from "@/components/paginator";
 import clsx from "clsx";
-import {api} from "@/lib/api";
+import { api } from "@/lib/api";
+import { transformActivity } from "@/utils/transformFromWp";
+import { mockData } from "@/app/activity/mock";
 
-
-/*
-* temporary dev images imports for testing purposes
-* TODO: delete after implementation
-* */
-import CementImage from "../../assets/activity-images/cement.jpg";
-import EgapIdeatonImage from "../../assets/activity-images/Egap_ideaton.png";
-import WorkProcessImage from "../../assets/activity-images/Work_process.jpg";
+import WorkProcessImage from "@/assets/activity-images/Work_process.jpg";
 
 async function getPosts() {
-  try {
-    const data = await api.get("/events?_embed&per_page=3");
-    return data;
-  } catch (error) {
-    console.error("Error fetching posts:", error);
-    }
+  let data = await api.get("/events?_embed&per_page=3");
+  data = transformActivity(data?.data, WorkProcessImage);
+  return data;
 }
 
-
 export default function EventsPage() {
-    const [mockEvents, setMockEvents] = useState([]);
-    const [isOpen, setIsOpen] = useState(false);
-    const [selected, setSelected] = useState('Фільтри');
-    const [searchTerm, setSearchTerm] = useState('');
-    const [currentPage, setCurrentPage] = useState(1);
+  const [mockEvents, setMockEvents] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState("Фільтри");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
-    const options = ['За останній місяць', 'За останній рік', 'За весь час'];
+  const options = ["За останній місяць", "За останній рік", "За весь час"];
 
-    // Mock-дані для подій
-    // const mockEvents = useMemo(() => [
-    //                     {
-    //         id: "3",
-    //         title: "Цифрова кафедра: робота за будь-яких умов",
-    //         category: "РОБОЧИЙ ПРОЦЕС",
-    //         date: "12.12.2025",
-    //         rawDate: new Date(2026, 3, 3), // Для фільтрації (місяці в JS починаються з 0)
-    //         description: "Навіть попри постійні вимкнення електроенергії проблемна група “Цифрова кафедра” продовжує свою роботу у звичному режимі...",
-    //         author: "Юліана Некрасова",
-    //         publishedAt: "12.12.2025, 14:30",
-    //         imageUrl: WorkProcessImage,
-    //         links: [{ text: "Посилання на публікацію", url: "https://cs.kpnu.edu.ua/2025/12/12/tsyfrova-kafedra-robota-za-bud-iakykh-umov/" }]
-    //     },
-    //     {
-    //         id: "1",
-    //         title: "ЕКСКУРСІЯ НА АТ «ПОДІЛЬСЬКИЙ ЦЕМЕНТ»",
-    //         category: "ЕКСКУРСІЯ",
-    //         date: "30.10.2025",
-    //         rawDate: new Date(2026, 3, 3), // Для фільтрації (місяці в JS починаються з 0)
-    //         description: "Здобувачі вищої освіти кафедри комп'ютерних наук разом із викладачами фізико-математичного факультету здійснили важливу виробничу екскурсію...",
-    //         author: "Юліана Некрасова",
-    //         publishedAt: "30.10.2025, 14:30",
-    //         imageUrl: CementImage,
-    //         links: [{ text: "Посилання на публікацію", url: "https://cs.kpnu.edu.ua/2025/10/30/ekskursiia-na-at-podilskyj-tsement/" }]
-    //     },
-    //     {
-    //         id: "2",
-    //         title: "EGAP IDEATHON 2025",
-    //         category: "OCBITA",
-    //         date: "20.10.2025",
-    //         rawDate: new Date(2025, 9, 15),
-    //         description: "Учасники наукового гуртка 'Цифрова кафедра' взяли активну участь у EGAP Ideathon 2025 - національному ідеатоні з розробки нових сервісів...",
-    //         author: "Юліана Некрасова",
-    //         publishedAt: "20.10.2025, 14:30",
-    //         imageUrl: EgapIdeatonImage,
-    //         links: [{ text: "Посилання на публікацію", url: "https://cs.kpnu.edu.ua/2025/10/20/kafedra-komp-iuternykh-nauk-na-egap-ideathon-2025/" }]
-    //     },
-
-    //     // // Генерація для тесту пагінації (всі минулорічні)
-    //     // ...Array.from({ length: 30 }, (_, i) => ({
-    //     //     id: (i + 3).toString(),
-    //     //     title: `Подія ${i + 3}`,
-    //     //     category: "OCBITA",
-    //     //     date: "12.10.2024",
-    //     //     rawDate: new Date(2024, 9, 12),
-    //     //     description: "Опис чергової важливої події, що відбулася в рамках діяльності кафедри або університету...",
-    //     //     author: "Юліана Некрасова",
-    //     //     publishedAt: "14.10.2024, 14:30",
-    //     //     imageUrl: Project3Image,
-    //     //     links: [{ text: "Посилання 1", url: "https://cs.kpnu.edu.ua/2025/10/30/ekskursiia-na-at-podilskyj-tsement/" }]
-    //     // }))
-    // ], []);
-
-    useEffect(() => {
-        const fetchEvents = async () => {
-            const events = await getPosts();
-               console.log("Pre Mapped events:", events?.data);
-                   let data = events?.data?.map(event => ({
-            id: event.id,
-            title: event.title?.rendered || '',
-            description: (event.excerpt?.rendered || '').replace(/<[^>]+>/g, '').trim(),
-            category: event.acf?.category || '',
-            date: event.acf?.event_date || '',
-            rawDate: event.acf?.event_date,
-            author: event.acf?.author_name || '',
-            publishedAt: event.acf?.published_at || '',
-            imageUrl: event._embedded?.['wp:featuredmedia']?.[0]?.source_url || WorkProcessImage,
-            links: event.acf?.links ? event.acf?.links.split(',') : [],
-        }));
-        console.log("Mapped events:", data);
-            setMockEvents(data);
-        };
-        fetchEvents();
-    }, []);
-
-    console.log("Fetched events:", mockEvents);
-
-    // Фільтрація за часом та пошуком
-    const filteredEvents = useMemo(() => {
-        const now = new Date();
-        return mockEvents.filter(event => {
-            const matchesSearch = event.title.toLowerCase().includes(searchTerm.toLowerCase());
-
-            let matchesTime = true;
-            if (selected === 'За останній місяць') {
-                const monthAgo = new Date().setMonth(now.getMonth() - 1);
-                matchesTime = event.rawDate >= monthAgo;
-            } else if (selected === 'За останній рік') {
-                const yearAgo = new Date().setFullYear(now.getFullYear() - 1);
-                matchesTime = event.rawDate >= yearAgo;
-            }
-
-            return matchesSearch && matchesTime;
-        }).sort((a, b) => b.rawDate - a.rawDate); // Нові спочатку
-    }, [selected, searchTerm, mockEvents]);
-
-    // Пагінація
-    const eventsPerPage = 12;
-    const totalPages = Math.ceil(filteredEvents.length / eventsPerPage);
-    const indexOfLastEvent = currentPage * eventsPerPage;
-    const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
-    const displayedEvents = filteredEvents.slice(indexOfFirstEvent, indexOfLastEvent);
-
-    const handlePageChange = (pageNumber) => {
-        setCurrentPage(pageNumber);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const events = await getPosts();
+        console.log("Mapped events:", events);
+        setMockEvents(events);
+      } catch (e) {
+        console.error("Error fetching events:", e);
+        setMockEvents(mockData);
+      }
     };
+    fetchEvents();
+  }, []);
 
-    const handleFilterChange = (opt) => {
-        setSelected(opt);
-        setCurrentPage(1);
-        setIsOpen(false);
-    };
+  console.log("Fetched events:", mockEvents);
 
-    const handleSearchChange = (e) => {
-        setSearchTerm(e.target.value);
-        setCurrentPage(1);
-    };
+  // Фільтрація за часом та пошуком
+  const filteredEvents = useMemo(() => {
+    const now = new Date();
+    return mockEvents
+      .filter((event) => {
+        const matchesSearch = event.title
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase());
 
-    return (
-        <main className={styles.main}>
-            <h1>Події</h1>
-            {/* FILTERS SECTION */}
-            <div className={clsx(styles.wrapperContainer, styles.filtersWrapper)}>
-                <div className={styles.searchInput}>
-                    <input type="search"
-                        name="search"
-                        id="searchInput"
-                        placeholder="Введіть назву проєкту"
-                        value={searchTerm}
-                        onChange={handleSearchChange} />
-                </div>
-                <div className={styles.selectWrapper}>
-                    <div
-                        className={`${styles.filterSelect} ${isOpen ? styles.active : ''}`}
-                        onClick={() => setIsOpen(!isOpen)}
-                    >
-                        <span>{selected}</span>
-                        <span className={styles.arrowIcon}></span>
-                    </div>
-                    {isOpen && (
-                        <ul className={styles.optionsList}>
-                            {options.map((opt) => (
-                                <li
-                                    key={opt}
-                                    className={styles.optionItem}
-                                    onClick={() => handleFilterChange(opt)}
-                                >
-                                    {opt}
-                                </li>
-                            ))}
-                        </ul>
-                    )}
-                </div>
+        let matchesTime = true;
+        if (selected === "За останній місяць") {
+          const monthAgo = new Date().setMonth(now.getMonth() - 1);
+          matchesTime = event.rawDate >= monthAgo;
+        } else if (selected === "За останній рік") {
+          const yearAgo = new Date().setFullYear(now.getFullYear() - 1);
+          matchesTime = event.rawDate >= yearAgo;
+        }
+
+        return matchesSearch && matchesTime;
+      })
+      .sort((a, b) => b.rawDate - a.rawDate); // Нові спочатку
+  }, [selected, searchTerm, mockEvents]);
+
+  // Пагінація
+  const eventsPerPage = 12;
+  const totalPages = Math.ceil(filteredEvents.length / eventsPerPage);
+  const indexOfLastEvent = currentPage * eventsPerPage;
+  const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
+  const displayedEvents = filteredEvents.slice(
+    indexOfFirstEvent,
+    indexOfLastEvent,
+  );
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleFilterChange = (opt) => {
+    setSelected(opt);
+    setCurrentPage(1);
+    setIsOpen(false);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+    setCurrentPage(1);
+  };
+
+  return (
+    <main className={styles.main}>
+      <h1>Події</h1>
+      {/* FILTERS SECTION */}
+      <div className={clsx(styles.wrapperContainer, styles.filtersWrapper)}>
+        <div className={styles.searchInput}>
+          <input
+            type="search"
+            name="search"
+            id="searchInput"
+            placeholder="Введіть назву проєкту"
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+        </div>
+        <div className={styles.selectWrapper}>
+          <div
+            className={`${styles.filterSelect} ${isOpen ? styles.active : ""}`}
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <span>{selected}</span>
+            <span className={styles.arrowIcon}></span>
+          </div>
+          {isOpen && (
+            <ul className={styles.optionsList}>
+              {options.map((opt) => (
+                <li
+                  key={opt}
+                  className={styles.optionItem}
+                  onClick={() => handleFilterChange(opt)}
+                >
+                  {opt}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+      {/* EVENTS SECTION  */}
+      <section className={clsx(styles.wrapperContainer, styles.eventsSection)}>
+        {displayedEvents.length > 0 ? (
+          displayedEvents.map((event) => (
+            <div key={event.id} className={styles.cardWrapper}>
+              <EventCard event={event} />
             </div>
-            {/* EVENTS SECTION  */}
-            <section className={clsx(styles.wrapperContainer, styles.eventsSection)}>
-                {displayedEvents.length > 0 ? (
-                    displayedEvents.map((event) => (
-                        <div key={event.id} className={styles.cardWrapper}>
-                            <EventCard event={event} />
-                        </div>
-                    ))
-                ) : (
-                    <p className={styles.noResults}>За вказаними критеріями пошуку подій не знайдено</p>
-                )}
-            </section>
-            {/* PAGINATION  */}
-            {totalPages > 1 && (
-                <Pagination className={styles.wrapperContainer}
-                    totalPages={totalPages}
-                    currentPage={currentPage}
-                    onPageChange={handlePageChange}
-                />
-            )}
-        </main>
-    );
+          ))
+        ) : (
+          <p className={styles.noResults}>
+            За вказаними критеріями пошуку подій не знайдено
+          </p>
+        )}
+      </section>
+      {/* PAGINATION  */}
+      {totalPages > 1 && (
+        <Pagination
+          className={styles.wrapperContainer}
+          totalPages={totalPages}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
+      )}
+    </main>
+  );
 }
