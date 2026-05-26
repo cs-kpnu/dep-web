@@ -10,7 +10,7 @@ const EventCard = ({ event }) => {
         <article className={styles.card}>
             <div className={styles.imageContainer}>
                 {/* FIXME: CHANGE TO NEXT/IMAGE */}
-                <img
+                <Image
                     src={imageUrl}
                     alt={title}
                     fill

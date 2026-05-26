@@ -23,7 +23,7 @@ const ProjectCard = ({ project }) => {
             {/* Секція зображення з бейджем статусу */}
             <div className={styles.imageContainer}>
                 {/* FIXME: CHANGE TO NEXT/IMAGE */}
-                <img
+                <Image
                     src={coverImage}
                     alt={title}
                     fill
