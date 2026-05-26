@@ -11,7 +11,7 @@ export const transformActivity = (data, defaultImg) => {
     rawDate: event.acf?.event_date,
     author: event.acf?.author_name || "",
     publishedAt: event.acf?.published_at || "",
-    imageUrl:
+    imageUrl: event.acf?.cover_image ||
       event._embedded?.["wp:featuredmedia"]?.[0]?.source_url || defaultImg,
     links: event.acf?.links
       ? parseCSV(event.acf?.links, (item) => ({ url: item, text: "Посилання на публікацію" }))

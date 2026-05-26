@@ -9,7 +9,8 @@ const EventCard = ({ event }) => {
     return (
         <article className={styles.card}>
             <div className={styles.imageContainer}>
-                <Image
+                {/* FIXME: CHANGE TO NEXT/IMAGE */}
+                <img
                     src={imageUrl}
                     alt={title}
                     fill
@@ -33,11 +34,11 @@ const EventCard = ({ event }) => {
                     <p className={styles.label}>ПУБЛІКАЦІЇ:</p>
                     <div className={styles['link-wrapper']}>
                         {links.map((link, idx) => (
-                        <a key={idx} href={link.url} target="_blank" className={styles.link}>
-                            🔗 {link.text}
-                        </a>
-                    ))}
-                    </div>   
+                            <a key={idx} href={link.url} target="_blank" className={styles.link}>
+                                🔗 {link.text}
+                            </a>
+                        ))}
+                    </div>
                 </div>
 
                 <footer className={styles.footer}>

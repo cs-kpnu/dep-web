@@ -2,6 +2,16 @@
     "key": "group_event_fields",
     "title": "Event Details",
     "fields": [
+             {
+            "key": "field_project_cover_image",
+            "label": "Cover Image",
+            "name": "cover_image",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "wrapper": { "width": "60", "class": "", "id": "" }
+        },
         {
             "key": "field_event_category",
             "label": "Category",
