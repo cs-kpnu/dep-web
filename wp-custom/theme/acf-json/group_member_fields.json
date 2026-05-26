@@ -37,10 +37,10 @@
                 "id": ""
             },
             "choices": {
-                "керівник": "Керівник",
-                "ментор": "Ментор",
-                "студент": "Студент",
-                "студентка": "Студентка"
+                "Керівник": "Керівник",
+                "Ментор": "Ментор",
+                "Студент": "Студент",
+                "Студентка": "Студентка"
             },
             "default_value": "студент",
             "return_format": "value",
@@ -62,7 +62,7 @@
             "required": 1,
             "conditional_logic": false,
             "wrapper": {
-                "width": "50",
+                "width": "33",
                 "class": "",
                 "id": ""
             },
@@ -120,25 +120,15 @@
             "prepend": "",
             "append": ""
         },
-        {
-            "key": "field_member_bio",
-            "label": "Bio Paragraphs",
-            "name": "bio",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": false,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "paragraph1, paragraph2, paragraph3",
-            "prepend": "",
-            "append": ""
+            {
+            "key": "field_project_cover_image",
+            "label": "Cover Image",
+            "name": "cover_image",
+            "type": "image",
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "wrapper": { "width": "50", "class": "", "id": "" }
         },
         {
             "key": "field_member_skills_hard",

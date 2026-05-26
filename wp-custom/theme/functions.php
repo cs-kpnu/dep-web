@@ -9,6 +9,14 @@ add_filter('acf/settings/load_json', function($paths) {
     return $paths;
 });
 
+// Resolve ACF image fields to URLs in the REST API (return_format is ignored outside PHP templates)
+add_filter('acf/rest/format_value_for_rest', function($value, $post_id, $field) {
+    if ($field['type'] === 'image' && is_numeric($value) && $value > 0) {
+        return wp_get_attachment_url($value);
+    }
+    return $value;
+}, 10, 3);
+
 function register_headless_cpts() {
     // 1. Register 'Project'
     register_post_type('project', [
