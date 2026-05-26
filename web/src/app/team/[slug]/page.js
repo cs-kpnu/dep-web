@@ -40,6 +40,7 @@ export default async function Profile({ params }) {
       <section className={styles.profileHero}>
         <div className={styles.leftColumn}>
           <div className={styles.imageWrapper}>
+            {/* FIXME: CHANGE TO NEXT/IMAGE */}
             <img
               src={member?.photo}
               alt={member.name}

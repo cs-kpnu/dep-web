@@ -22,7 +22,8 @@ const ProjectCard = ({ project }) => {
         <article className={styles.card}>
             {/* Секція зображення з бейджем статусу */}
             <div className={styles.imageContainer}>
-                <Image
+                {/* FIXME: CHANGE TO NEXT/IMAGE */}
+                <img
                     src={coverImage}
                     alt={title}
                     fill
@@ -30,8 +31,8 @@ const ProjectCard = ({ project }) => {
                     className={styles.image}
                 />
                 <span className={clsx(styles.statusBadge, statusClass)}>
-    {label}
-</span>
+                    {label}
+                </span>
             </div>
 
             {/* Основний контент */}
@@ -54,7 +55,7 @@ const ProjectCard = ({ project }) => {
                     </div>
                 </div>
 
-                <p className={styles.description}>{description}</p>
+                <p className={styles.description} dangerouslySetInnerHTML={{ __html: description }} />
 
                 {/* Динамічне посилання на сторінку проєкту */}
                 <Link href={`/projects/${id}`} className={styles.detailsBtn}>

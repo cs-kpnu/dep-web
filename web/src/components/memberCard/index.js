@@ -27,6 +27,7 @@ const MemberCard = ({ member }) => {
     return (
         <article className={styles.card}>
             <div className={styles.imageContainer}>
+                {/* FIXME: CHANGE TO NEXT/IMAGE */}
                 <img
                     src={imageUrl}
                     alt={`${lastName} ${firstName}`}
