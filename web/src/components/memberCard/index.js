@@ -27,8 +27,8 @@ const MemberCard = ({ member }) => {
     return (
         <article className={styles.card}>
             <div className={styles.imageContainer}>
-                <Image
-                    src={`/users-profile-images/${imageUrl}`}
+                <img
+                    src={imageUrl}
                     alt={`${lastName} ${firstName}`}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

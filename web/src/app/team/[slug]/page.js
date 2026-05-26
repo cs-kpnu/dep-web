@@ -5,15 +5,32 @@ import { Code2, Globe, Briefcase, ExternalLink } from "lucide-react";
 import JobsAccordion from "@/components/jobsAccordion";
 import Breadcrumb from "@/components/breadcrumb";
 import { mockTeam } from "@/data/mockTeam";
+import { api } from "@/lib/api";
+import { transformMember } from "@/utils/transformFromWp";
 import styles from "./first.module.css";
+
+import UserImage from "@/assets/team-photo-mock/member1.jpg"
+
+
+
+async function getMember(slug) {
+  try {
+    const data = await api.get(`members/${slug}?_embed`);
+    return transformMember(data?.data);
+  } catch {
+    return mockTeam.find((m) => m.id === slug) ?? null;
+  }
+}
+
 
 export default async function Profile({ params }) {
   const { slug } = await params;
-  const member = mockTeam.find((m) => m.id === slug);
+  const member = await getMember(slug)
 
   if (!member) {
     notFound();
   }
+
 
   return (
     <main className={styles.pageContainer}>
@@ -24,7 +41,7 @@ export default async function Profile({ params }) {
         <div className={styles.leftColumn}>
           <div className={styles.imageWrapper}>
             <img
-              src={`/users-profile-images/${member.photo}`}
+              src={member?.photo}
               alt={member.name}
               width={300}
               height={300}
@@ -45,9 +62,7 @@ export default async function Profile({ params }) {
           <h1 className={styles.name}>{member.name}</h1>
 
           <div className={styles.infoBlock}>
-            {member.bio.map((paragraph, i) => (
-              <p key={i} dangerouslySetInnerHTML={{ __html: paragraph }} />
-            ))}
+            <div dangerouslySetInnerHTML={{ __html: member?.bio || "" }} />
             <p>
               <strong>Дата народження:</strong> {member.birthDate}
             </p>
@@ -141,8 +156,8 @@ export default async function Profile({ params }) {
           </>
         )} */}
       </section>
-      {member?.publications?.length > 0 &&  <JobsAccordion jobs={member.publications} />}
-     
+      {member?.publications?.length > 0 && <JobsAccordion jobs={member.publications} />}
+
     </main>
   );
 }
