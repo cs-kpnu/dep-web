@@ -32,11 +32,11 @@ export default async function Profile({ params }) {
             />
           </div>
           <div className={styles.badges}>
-            <div className={`${styles.badge} ${styles.badgePrimary}`}>
-              {member.roleLabel}
+            <div className={`${styles.badge} ${styles.badgePrimary} capitalize`}>
+              {member.role}
             </div>
-            <div className={`${styles.badge} ${styles.badgeSuccess}`}>
-              {member.statusLabel}
+            <div className={`${styles.badge} ${styles.badgeSuccess} uppercase`}>
+              {member.status}
             </div>
           </div>
         </div>

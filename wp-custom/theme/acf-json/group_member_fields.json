@@ -53,26 +53,6 @@
             "save_options": 0
         },
         {
-            "key": "field_member_role_label",
-            "label": "Role Label (displayed)",
-            "name": "role_label",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "e.g. Керівник \/ Ментор",
-            "required": 0,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "34",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_member_status",
             "label": "Status",
             "name": "status",
@@ -99,26 +79,6 @@
             "placeholder": "",
             "create_options": 0,
             "save_options": 0
-        },
-        {
-            "key": "field_member_status_label",
-            "label": "Status Label (uppercase display)",
-            "name": "status_label",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "e.g. АКТИВНИЙ",
-            "required": 0,
-            "conditional_logic": false,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
         },
         {
             "key": "field_member_degree",
@@ -414,10 +374,10 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Custom fields for the Member (Team) post type, mirroring the mockTeam data structure.",
+    "description": "Custom fields for the Member (Team) post type, similar to mockTeam data",
     "show_in_rest": 1,
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1779739760
+    "modified": 1779813547
 }
