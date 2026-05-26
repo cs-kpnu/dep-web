@@ -1,19 +1,47 @@
 'use client'
 
 import styles from "./page.module.css";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import MemberCard from "@/components/memberCard";
 import Pagination from "@/components/paginator";
 import clsx from "clsx";
+import { api } from "@/lib/api";
+import { transformMembers } from "@/utils/transformFromWp";
 
-import {mockTeam as teamData} from "@/data/mockTeam";
+import { mockTeam as teamData } from "@/data/mockTeam";
 // /*
 // * temporary dev images imports for testing purposes
 // * TODO: delete after implementation
 // * */
-// import UserImage from "../../assets/team-photo-mock/member1.jpg"
+import UserImage from "../../assets/team-photo-mock/member1.jpg"
+
+
+function transformForViewTeam(data = []) {
+    return data.map(({ name, role, projects, status, joinDate, ...member }) => {
+        const [lastName = "", firstName = "", patronymic = ""] = name.split(" ");
+        return {
+            ...member,
+            lastName,
+            firstName,
+            patronymic,
+            role: role ?? "Учасник",
+            status,
+            imageUrl: member.photo,
+            projects: projects.map((proj) => proj.name),
+            teamDate: joinDate,
+        };
+    })
+}
+
+async function getMembers() {
+    let data = await api.get("/members?_embed&per_page=3");
+    data = transformMembers(data?.data, UserImage);
+    return data;
+}
+
 
 export default function TeamPage() {
+    const [mockTeam, setMockTeam] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [selected, setSelected] = useState('Фільтри');
     const [searchTerm, setSearchTerm] = useState('');
@@ -22,42 +50,24 @@ export default function TeamPage() {
     // Оновлені опції відповідно до статусів команди
     const options = ['Всі', 'Керівник', 'Ментор', 'Учасник'];
 
-    const ROLE_MAP = { керівник: "Керівник", ментор: "Ментор", студент: "Учасник" };
 
-    const mockedTeamFromFile = teamData.map(({ name, role, projects, status, joinDate, ...member }) => {
-      const [lastName = "", firstName = "", patronymic = ""] = name.split(" ");
-      return {
-        ...member,
-        lastName,
-        firstName,
-        patronymic,
-        role: ROLE_MAP[role] ?? "Учасник",
-        status,
-        imageUrl: member.photo,
-        projects: projects.map((proj) => proj.name),
-        teamDate: joinDate,
-      };
-    });
 
-    const mockTeam = useMemo(
-      () => [
-        // 3 Керівники (Активні)
-        ...mockedTeamFromFile,
+    useEffect(() => {
+        const fetchEvents = async () => {
+            try {
+                let members = await getMembers();
+                console.log("Mapped members:", members);
+                members = transformForViewTeam(members);
+                setMockTeam(members);
+            } catch (e) {
+                const mockedTeamFromFile = transformForViewTeam(teamData);
+                console.error("Error fetching members:", e);
+                setMockTeam(mockedTeamFromFile);
+            }
+        };
+        fetchEvents();
+    }, []);
 
-        // // 3 Ментори (Активні)
-        // ...Array(3).fill(null).map((_, i) => ({
-        //     id: `mentor-${i}`,
-        //     lastName: 'Мястковська',
-        //     firstName: 'Марина',
-        //     patronymic: 'Олександрівна',
-        //     role: 'Ментор',
-        //     status: 'Активний',
-        //     degree: 'Кандидат педагогічних наук, старший викладач кафедри',
-        //     teamDate: '1 вересня 2024 р.',
-        //     projects: ['EdTech', 'LMS'],
-        //     imageUrl: UserImage
-        // })),
-    ], []);
 
     // Фільтрація учасників (пошук по прізвищу або імені)
     const filteredMembers = useMemo(() => {

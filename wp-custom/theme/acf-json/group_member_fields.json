@@ -196,7 +196,7 @@
             },
             "default_value": "",
             "maxlength": "",
-            "placeholder": "language1, language2, language3",
+            "placeholder": "language1,level1/ language2,level2/ language3,level3",
             "prepend": "",
             "append": ""
         },
@@ -216,7 +216,7 @@
             },
             "default_value": "",
             "maxlength": "",
-            "placeholder": "publication1, publication2, publication3",
+            "placeholder": "publication1,link1/ publication2,link2/ publication3,link3",
             "prepend": "",
             "append": ""
         },
@@ -236,7 +236,7 @@
             },
             "default_value": "",
             "maxlength": "",
-            "placeholder": "project1, project2, project3",
+            "placeholder": "project_name,id/ project_name,id/ project_name,id",
             "prepend": "",
             "append": ""
         }

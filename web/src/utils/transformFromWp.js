@@ -12,14 +12,14 @@ export const transformActivity = (data, defaultImg) => {
       event._embedded?.["wp:featuredmedia"]?.[0]?.source_url || defaultImg,
     links: event.acf?.links
       ? event.acf?.links
-          .split(",")
-          .map((item) => ({ url: item, text: "Посилання на публікацію" }))
+        .split(",")
+        .map((item) => ({ url: item, text: "Посилання на публікацію" }))
       : [],
   }));
 };
 
-export const transformProject = (data, defaultImg) => {
-  return data?.map((item) => ({
+export const transformProject = (item, defaultImg) => {
+  return {
     id: item.id,
     title: item.title?.rendered || "",
     description: (item.excerpt?.rendered || "").replace(/<[^>]+>/g, "").trim(),
@@ -27,7 +27,7 @@ export const transformProject = (data, defaultImg) => {
     category: item.acf?.category_label || item.acf?.category || "",
     categoryLabel: item?.acf?.category_label || item.acf?.category || "",
     startDate: item.acf?.launch_date || "",
-    participants: item.acf?.participants?.split(";").map(item => { 
+    participants: item.acf?.participants?.split(";").map(item => {
       item = item.split(",");
       return {
         name: item[0] || 'Admin',
@@ -37,5 +37,52 @@ export const transformProject = (data, defaultImg) => {
     }),
     coverImage: item.acf?.cover_image || item._embedded?.["wp:featuredmedia"]?.[0]?.source_url || defaultImg,
     imageUrl: item.acf?.cover_image || item._embedded?.["wp:featuredmedia"]?.[0]?.source_url || defaultImg,
-  }));
+  };
+}
+
+export const transformProjects = (data, defaultImg) => {
+  return data?.map((item) => transformProject(item, defaultImg))
+}
+
+export const transformMember = (item, defaultImg) => {
+  const acf = item.acf || {};
+
+  const parseCSV = (str) =>
+    str ? str.split(",").map((s) => s.trim()).filter(Boolean) : [];
+
+  const parseSlashItems = (str, mapper) =>
+    str ? str.split("/").map((s) => s.trim()).filter(Boolean).map(mapper) : [];
+
+  return {
+    id: item.id,
+    slug: item.slug || "",
+    name: item.title?.rendered || "",
+    birthDate: acf.birth_date || "",
+    role: acf.role || "",
+    status: acf.status || "",
+    degree: acf.degree || "",
+    joinDate: acf.join_date || "",
+    photo: item._embedded?.["wp:featuredmedia"]?.[0]?.source_url || defaultImg,
+    bio: parseCSV(acf.bio),
+    skills: {
+      hard: parseCSV(acf.skills_hard),
+      soft: parseCSV(acf.skills_soft),
+    },
+    languages: parseSlashItems(acf.languages, (entry) => {
+      const [name, level] = entry.split(",").map((s) => s.trim());
+      return { name: name || "", level: level || "" };
+    }),
+    publications: parseSlashItems(acf.publications, (entry) => {
+      const [name, url] = entry.split(",").map((s) => s.trim());
+      return { name: name || "", url: url || "" };
+    }),
+    projects: parseSlashItems(acf.member_projects, (entry) => {
+      const [name, id] = entry.split(",").map((s) => s.trim());
+      return { id: id || "", name: name || "" };
+    }),
+  };
+}
+
+export const transformMembers = (data, defaultImg) => {
+  return data?.map((item) => transformMember(item, defaultImg))
 }

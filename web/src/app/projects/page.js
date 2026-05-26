@@ -7,7 +7,7 @@ import clsx from "clsx";
 import ProjectCard from "@/components/projectCard";
 import Pagination from "@/components/paginator";
 import { api } from "@/lib/api";
-import { transformProject } from "@/utils/transformFromWp";
+import { transformProjects } from "@/utils/transformFromWp";
 
 import { mockProjects as projectsData } from "@/data/mockProjects";
 
@@ -21,7 +21,7 @@ import Project3Image from "../../assets/project-images/project3.svg";
 
 async function getProjects() {
   const data = await api.get("/projects?_embed&per_page=3");
-  return transformProject(data?.data);
+  return transformProjects(data?.data);
 }
 
 export default function ProjectsPage() {
