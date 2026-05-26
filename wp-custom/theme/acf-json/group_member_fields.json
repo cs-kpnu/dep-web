@@ -125,7 +125,7 @@
             "label": "Bio Paragraphs",
             "name": "bio",
             "aria-label": "",
-            "type": "repeater",
+            "type": "text",
             "instructions": "",
             "required": false,
             "conditional_logic": false,
@@ -134,33 +134,18 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "block",
-            "button_label": "Add Paragraph",
-            "min": 1,
-            "max": 5,
-            "sub_fields": [
-                {
-                    "key": "field_member_bio_paragraph",
-                    "label": "Paragraph",
-                    "name": "paragraph",
-                    "type": "textarea",
-                    "instructions": "HTML allowed: <strong>, <em>",
-                    "rows": 3,
-                    "required": 1,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    }
-                }
-            ]
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "paragraph1, paragraph2, paragraph3",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_member_skills_hard",
             "label": "Hard Skills",
             "name": "skills_hard",
             "aria-label": "",
-            "type": "repeater",
+            "type": "text",
             "instructions": "",
             "required": false,
             "conditional_logic": false,
@@ -169,31 +154,18 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "table",
-            "button_label": "Add Skill",
-            "min": 0,
-            "max": 0,
-            "sub_fields": [
-                {
-                    "key": "field_member_hard_skill",
-                    "label": "Skill",
-                    "name": "skill",
-                    "type": "text",
-                    "required": 1,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    }
-                }
-            ]
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "skill1, skill2, skill3",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_member_skills_soft",
             "label": "Soft Skills",
             "name": "skills_soft",
             "aria-label": "",
-            "type": "repeater",
+            "type": "text",
             "instructions": "",
             "required": false,
             "conditional_logic": false,
@@ -202,31 +174,18 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "table",
-            "button_label": "Add Skill",
-            "min": 0,
-            "max": 0,
-            "sub_fields": [
-                {
-                    "key": "field_member_soft_skill",
-                    "label": "Skill",
-                    "name": "skill",
-                    "type": "text",
-                    "required": 1,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    }
-                }
-            ]
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "skill1, skill2, skill3",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_member_languages",
             "label": "Languages",
             "name": "languages",
             "aria-label": "",
-            "type": "repeater",
+            "type": "text",
             "instructions": "",
             "required": false,
             "conditional_logic": false,
@@ -235,44 +194,18 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "table",
-            "button_label": "Add Language",
-            "min": 0,
-            "max": 0,
-            "sub_fields": [
-                {
-                    "key": "field_member_language_name",
-                    "label": "Language",
-                    "name": "name",
-                    "type": "text",
-                    "required": 1,
-                    "wrapper": {
-                        "width": "50",
-                        "class": "",
-                        "id": ""
-                    }
-                },
-                {
-                    "key": "field_member_language_level",
-                    "label": "Level",
-                    "name": "level",
-                    "type": "text",
-                    "instructions": "e.g. native, intermediate, B1+",
-                    "required": 0,
-                    "wrapper": {
-                        "width": "50",
-                        "class": "",
-                        "id": ""
-                    }
-                }
-            ]
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "language1, language2, language3",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_member_publications",
             "label": "Publications",
             "name": "publications",
             "aria-label": "",
-            "type": "repeater",
+            "type": "text",
             "instructions": "",
             "required": false,
             "conditional_logic": false,
@@ -281,43 +214,18 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "block",
-            "button_label": "Add Publication",
-            "min": 0,
-            "max": 0,
-            "sub_fields": [
-                {
-                    "key": "field_member_pub_name",
-                    "label": "Title",
-                    "name": "name",
-                    "type": "text",
-                    "required": 1,
-                    "wrapper": {
-                        "width": "60",
-                        "class": "",
-                        "id": ""
-                    }
-                },
-                {
-                    "key": "field_member_pub_url",
-                    "label": "URL \/ DOI",
-                    "name": "url",
-                    "type": "url",
-                    "required": 0,
-                    "wrapper": {
-                        "width": "40",
-                        "class": "",
-                        "id": ""
-                    }
-                }
-            ]
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "publication1, publication2, publication3",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_member_projects",
             "label": "Projects",
             "name": "member_projects",
             "aria-label": "",
-            "type": "repeater",
+            "type": "text",
             "instructions": "",
             "required": false,
             "conditional_logic": false,
@@ -326,36 +234,11 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "table",
-            "button_label": "Add Project",
-            "min": 0,
-            "max": 0,
-            "sub_fields": [
-                {
-                    "key": "field_member_project_id",
-                    "label": "Project ID",
-                    "name": "project_id",
-                    "type": "text",
-                    "required": 0,
-                    "wrapper": {
-                        "width": "30",
-                        "class": "",
-                        "id": ""
-                    }
-                },
-                {
-                    "key": "field_member_project_name",
-                    "label": "Project Name",
-                    "name": "project_name",
-                    "type": "text",
-                    "required": 1,
-                    "wrapper": {
-                        "width": "70",
-                        "class": "",
-                        "id": ""
-                    }
-                }
-            ]
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "project1, project2, project3",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -374,10 +257,10 @@
     "instruction_placement": "label",
     "hide_on_screen": "",
     "active": true,
-    "description": "Custom fields for the Member (Team) post type, similar to mockTeam data",
+    "description": "Custom fields for the Member (Team) post type, mirroring the mockTeam data structure.",
     "show_in_rest": 1,
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1779813547
+    "modified": 1779739760
 }
