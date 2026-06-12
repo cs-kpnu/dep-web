@@ -104,3 +104,22 @@ function my_headless_acf_blocks() {
         ));
     }
 }
+
+
+function add_cors_http_header() {
+    $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+
+    $allowed_origins = [
+        'https://dep-web-gamma.vercel.app',
+        'http://localhost:3000', #FIXME: ONLY TEMPORARY FOR TESTING PURPOSES, REMOVE THIS IN PRODUCTION
+        'http://127.0.0.1:3000' #FIXME: ONLY TEMPORARY FOR TESTING PURPOSES, REMOVE THIS IN PRODUCTION
+    ];
+
+    if (in_repeatable_array($origin, $allowed_origins) || in_array($origin, $allowed_origins)) {
+        header("Access-Control-Allow-Origin: " . $origin);
+        header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Headers: Authorization, Content-Type, X-WP-Nonce");
+    }
+}
+add_action('init', 'add_cors_http_header');
