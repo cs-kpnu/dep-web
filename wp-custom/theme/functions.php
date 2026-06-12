@@ -115,7 +115,7 @@ function add_cors_http_header() {
         'http://127.0.0.1:3000' #FIXME: ONLY TEMPORARY FOR TESTING PURPOSES, REMOVE THIS IN PRODUCTION
     ];
 
-    if (in_repeatable_array($origin, $allowed_origins) || in_array($origin, $allowed_origins)) {
+    if (in_array($origin, $allowed_origins)) {
         header("Access-Control-Allow-Origin: " . $origin);
         header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
         header("Access-Control-Allow-Credentials: true");
