@@ -5,7 +5,13 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "http",
-        hostname: "localhost",
+        hostname: "localhost", //FIXME: CHANGE ON PROD (HARDCODED)
+      },
+      {
+        protocol: 'https',
+        hostname: 'lvivmetalwp.click', //FIXME: CHANGE ON PROD (HARDCODED)
+        port: '',
+        pathname: '/wp-content/**',
       },
     ],
   },
