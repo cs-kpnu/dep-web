@@ -9,8 +9,8 @@ export const getMetadata = ({
     type = "website",
     ...rest
 }) => {
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://bogemia.ua";
-    const imageUrl = "/assets/img/bogemia-opengraph.png";
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://dep-web-gamma.vercel.app";
+    const imageUrl = "/assets/img/bogemia-opengraph.png"; //FIXME: CHANGE ON PRODUCTION
 
     // Ensure image URL is absolute
     const resolvedImageUrl = images
