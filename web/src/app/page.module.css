@@ -130,14 +130,27 @@
   background: linear-gradient(
     302.51deg,
     rgba(0, 0, 0, 0.5) 4.3%,
-    rgba(56, 83, 222, 0.5) 25.56%,
+    rgba(0, 0, 0, 0.5) 25.56%,
     rgba(0, 0, 0, 0.5) 50.18%,
     rgba(56, 83, 222, 0.5) 78.49%,
     rgba(0, 0, 0, 0.5) 101.22%,
     rgba(56, 83, 222, 0.5) 117.8%
   );
+  /* background: black; */
   border-bottom: 2px solid #3853de;
+  video{
+  width: 45%;
+  position: absolute;
+  right: 0;
+  max-width: 100%;
+  overflow: hidden;
+  height: 100%;
+  source{
+      object-fit: contain;
+  }
 }
+}
+
 
 .hero::before {
   content: '';
@@ -606,6 +619,35 @@
     padding: 20px;
     padding-top: 60px;
     text-align: center;
+  }
+  .hero {
+  padding-top: 160px;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  /* background: var(--gradient-main); */
+  position: relative;
+  overflow: hidden;
+
+  background: linear-gradient(
+    340.51deg,
+    rgba(56, 83, 222, 0.5) 4.3%,
+    rgba(56, 83, 222, 0.5) 25.56%,
+    rgba(0, 0, 0, 0.5) 50.18%,
+    rgba(0, 0, 0, 0.5) 78.49%,
+    rgba(0, 0, 0, 0.5) 101.22%,
+    rgba(0, 0, 0, 0.5) 117.8%
+  );
+  /* background: black; */
+  border-bottom: 2px solid #3853de;
+  video{
+  width: 70%;
+  position: absolute;
+  top: -165px;
+  left: calc(50% - 35%);
+  max-width: 100%;
+  overflow: hidden;
+  height: 100%;
   }
   .hero-container {
     flex-direction: column-reverse;

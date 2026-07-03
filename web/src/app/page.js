@@ -88,6 +88,10 @@ export default async function Home() {
       <DebugProps label="page" data={page?.data} />
       <main className={styles.main}>
         <section className={styles.hero}>
+          <video autoPlay muted loop className="background-video">
+          <source srcSet="width: 100%" src="https://stream.mux.com/blULaJm2RMbAmsrwxLrBdgEx9yI1do2yM89vHTkdA6I.m3u8" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
           <div className={clsx(styles.container, styles["hero-container"])}>
             <div className={styles["hero-content"]}>
               {title1 ? (
@@ -105,9 +109,9 @@ export default async function Home() {
               )}
                 <p dangerouslySetInnerHTML={{ __html: description }}></p>
             </div>
-            <div className={styles["hero-graphic"]}>
+            {/* <div className={styles["hero-graphic"]}>
               <Image src={BubbleImage} alt="Hero Graphic" />
-            </div>
+            </div> */}
           </div>
         </section>
 
