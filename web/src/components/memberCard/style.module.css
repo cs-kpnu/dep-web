@@ -88,7 +88,7 @@
     font-size: 1.0rem;
     color: #4d71ff;
     line-height: 1.4;
-    min-height: 4.5rem; /* Резервуємо місце під 3 рядки */
+    min-height: 3rem; /* Резервуємо місце під 3 рядки */
     margin-bottom: 0.5rem;
     display: -webkit-box;
     -webkit-line-clamp: 3;

@@ -30,6 +30,7 @@ export const transformProject = (item, defaultImg) => {
     category: item.acf?.category_label || item.acf?.category || "",
     categoryLabel: item.acf?.category_label || item.acf?.category || "",
     launchDate: item.acf?.launch_date || "",
+    startDate: item.acf?.launch_date || "",
     technologies: item.acf?.technologies || "",
     participants: item.acf?.participants
       ? item.acf?.participants?.split(";").map((entry) => {

@@ -20,7 +20,7 @@ import Project2Image from "../../assets/project-images/project2.svg";
 import Project3Image from "../../assets/project-images/project3.svg";
 
 async function getProjects() {
-  const data = await api.get("/projects?_embed&per_page=3");
+  const data = await api.get("/projects?_embed");
   return transformProjects(data?.data);
 }
 

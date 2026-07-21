@@ -34,7 +34,7 @@ function transformForViewTeam(data = []) {
 }
 
 async function getMembers() {
-    let data = await api.get("/members?_embed&per_page=3");
+    let data = await api.get("/members?_embed");
     data = transformMembers(data?.data, UserImage);
     return data;
 }

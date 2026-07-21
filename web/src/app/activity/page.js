@@ -12,7 +12,7 @@ import { mockData } from "@/data/mockEvents";
 import WorkProcessImage from "@/assets/activity-images/Work_process.jpg";
 
 async function getPosts() {
-  let data = await api.get("/events?_embed&per_page=3");
+  let data = await api.get("/events?_embed");
   data = transformActivity(data?.data, WorkProcessImage);
   return data;
 }
