@@ -31,6 +31,7 @@ async function getPosts() {
     }
 }
 
+export const revalidate = 60;
 export async function generateMetadata() {
   return {
     title: "Цифрова кафедра! Навчайся. Cтворюй. Надихай!",
@@ -65,11 +66,7 @@ function MockedProjects() {
 }
 
 const mockedDescription =  "Ми реалізуємо вагомі IT-рішення, посилюючи громадянську позицію молоді, та формуємо партнерство з провідними технічними спеціалістами й організаціями галузі."
-
-
   
-
-
 export default async function Home() {
   const posts = await getPosts();
   const page = await getPage();
